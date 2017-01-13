@@ -3,6 +3,6 @@
 	
 	<mapper namespace="com.bjtu.ycd.dao.IUserDao">
 	 	<select id="getUserByName" parameterType="com.bjtu.ycd.vo.User" resultType="com.bjtu.ycd.vo.User">
-	 		select * from cn_user where username = #{username}
+	 		select * from cn_user where username = #{username} 
 	 	</select>
 	</mapper>
