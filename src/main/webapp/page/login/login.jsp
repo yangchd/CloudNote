@@ -25,7 +25,7 @@
       <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Login</h2>
         <!-- required -->
-        <input type="text" class="form-control" id="username" placeholder="Email address"  autofocus>
+        <input type="text" class="form-control" id="username" placeholder="Email or Phone"  autofocus>
         <input type="password" class="form-control" id="password" placeholder="Password" >
         <input type="button" class="btn btn-lg btn-primary btn-block" id="loginbtn" value="Sign in"/>
       </form>

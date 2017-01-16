@@ -17,7 +17,12 @@ window.onload = function(){
 			data:logindata,
 			timeout:2000,
 			success:function(result){
-				alert(JSON.stringify(result.user));
+				if(result.retflag==0){
+					alert(result.msg);
+				}
+				if(result.retflag==1){
+					alert(result.msg);
+				}
 			},
 			error:function(msg){
 				alert(JSON.stringify(msg));

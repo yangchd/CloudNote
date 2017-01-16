@@ -7,7 +7,22 @@ public class User {
 	
 	private String username;
 	private String password;
+	private String email;
+	private String mobile;
 	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -22,7 +37,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + "]";
+		return "User [username=" + username + ", password=" + password + ", email=" + email + ", mobile=" + mobile
+				+ "]";
 	}
 	
 }

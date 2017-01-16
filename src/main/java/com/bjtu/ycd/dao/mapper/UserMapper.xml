@@ -3,6 +3,16 @@
 	
 	<mapper namespace="com.bjtu.ycd.dao.IUserDao">
 	 	<select id="getUserByName" parameterType="com.bjtu.ycd.vo.User" resultType="com.bjtu.ycd.vo.User">
-	 		select * from cn_user where username = #{username} 
+	 		select * from cn_user 
+	 		where 1=1
+	 		<if test="email!=null">
+	 			and email = #{email}
+	 		</if>
+	 		<if test="mobile!=null">
+	 			and mobile = #{mobile}
+	 		</if>
 	 	</select>
+	 	
+	 	
 	</mapper>
+	
