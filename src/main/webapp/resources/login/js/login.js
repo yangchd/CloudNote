@@ -3,27 +3,24 @@
  * 登录js文件
  */
 
-
 window.onload = function(){
 	
-	
-	var trandata = {
-			username:$('#username').val(),
-			password:$('#password').val()
-	}
-	
 	$('#loginbtn').on('click',function(){
+		var logindata = {
+				username:$('#username').val(),
+				password:$('#password').val()
+		}
 		$.ajax({
 			type:"GET",
-			url:"",
+			url:getUrl()+"/login/getLogin",
 			dataType:"json",
-			data:trandata,
+			data:logindata,
 			timeout:2000,
 			success:function(result){
-				
+				alert(JSON.stringify(result.user));
 			},
-			error:function(){
-				alert("请求错误")
+			error:function(msg){
+				alert(JSON.stringify(msg));
 			}
 		});
 	})

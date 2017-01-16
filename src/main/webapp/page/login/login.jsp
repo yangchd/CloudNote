@@ -14,6 +14,7 @@
     <link href="../../resources/login/css/login.css" rel="stylesheet">
     
     <script type="text/javascript" src="../../resources/jquery.js"></script>
+    <script type="text/javascript" src="../../resources/tool.js"></script>
     <script type="text/javascript" src="../../resources/login/js/login.js"></script>
 
   </head>
@@ -23,14 +24,10 @@
     <div class="container">
       <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Login</h2>
-        <input type="text" class="form-control" id="username" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" id="password" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" id="loginbtn">Sign in</button>
+        <!-- required -->
+        <input type="text" class="form-control" id="username" placeholder="Email address"  autofocus>
+        <input type="password" class="form-control" id="password" placeholder="Password" >
+        <input type="button" class="btn btn-lg btn-primary btn-block" id="loginbtn" value="Sign in"/>
       </form>
     </div> <!-- /container -->
 
