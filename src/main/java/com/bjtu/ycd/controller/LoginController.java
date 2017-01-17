@@ -46,10 +46,10 @@ public class LoginController {
     	}
     	user.setPassword(loginuser.getPassword());
     	int loginFlag = 0;//用户参数标志位，0代表不是邮箱也不是手机号，登录失败，1代表进行登录操作
-    	if (new Tool().isEmail(loginuser.getUsername())) {
+    	if (Tool.isEmail(loginuser.getUsername())) {
 			user.setEmail(loginuser.getUsername());
 			loginFlag = 1;
-		}else if(new Tool().isMobile(loginuser.getUsername())){
+		}else if(Tool.isMobile(loginuser.getUsername())){
 			user.setMobile(loginuser.getUsername());
 			loginFlag = 1;
 		}

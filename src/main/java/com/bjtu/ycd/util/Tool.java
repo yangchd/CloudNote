@@ -8,7 +8,7 @@ public class Tool {
 	 * @param email
 	 * @return
 	 */
-	public boolean isEmail(String email){
+	public static boolean isEmail(String email){
 		boolean flag = false;
 		String rule = "\\w+\\x40\\w+\\x2e\\w+";
 		if (email.matches(rule)) {
@@ -23,7 +23,7 @@ public class Tool {
 	 * @param mobile
 	 * @return
 	 */
-	public boolean isMobile(String mobile){
+	public static boolean isMobile(String mobile){
 		boolean flag = false;
 		String rule = "^[1][3,4,5,7,8][0-9]{9}$";
 		if (mobile.matches(rule)) {
