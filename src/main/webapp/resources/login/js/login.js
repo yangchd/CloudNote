@@ -18,7 +18,7 @@ window.onload = function(){
 			timeout:2000,
 			success:function(result){
 				if(result.retflag==0){
-					alert(result.msg);
+					window.location.href=getUrl()+"/page/homepage/homePage.jsp";
 				}
 				if(result.retflag==1){
 					alert(result.msg);
