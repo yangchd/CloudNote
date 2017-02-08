@@ -7,9 +7,9 @@
 <title>主页</title>
 
 <link href="../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../resources/homepage/css/homePage.css" rel="stylesheet">
+<link href="../../resources/page/homepage/css/homePage.css" rel="stylesheet">
 
-<script type="text/javascript" src="../../resources/homepage/js/homePage.js"></script>
+<script type="text/javascript" src="../../resources/page/homepage/js/homePage.js"></script>
 <script type="text/javascript" src="../../resources/jquery.js"></script>
 <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
 

@@ -11,11 +11,11 @@
     <title>cloudnote</title>
 
     <link href="../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../resources/login/css/login.css" rel="stylesheet">
+    <link href="../../resources/page/login/css/login.css" rel="stylesheet">
     
     <script type="text/javascript" src="../../resources/jquery.js"></script>
     <script type="text/javascript" src="../../resources/tool.js"></script>
-    <script type="text/javascript" src="../../resources/login/js/login.js"></script>
+    <script type="text/javascript" src="../../resources/page/login/js/login.js"></script>
 
   </head>
 

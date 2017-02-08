@@ -32,7 +32,7 @@ public class LoginController {
     public Map<String, Object> getLogin(User loginuser){
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	Logger logger = Logger.getLogger(LoggerUtil.class);
-    	logger.info("login/getLogin请求-- username:"+loginuser.getUsername()+"and password:"+loginuser.getPassword()+"\r\n");
+    	logger.info("login/getLogin请求: username:"+loginuser.getUsername()+" --- password:"+loginuser.getPassword()+"\r\n");
     	
     	if(loginuser.getUsername()==null||"".equals(loginuser.getUsername())){
     		rMap.put("retflag", "1");
