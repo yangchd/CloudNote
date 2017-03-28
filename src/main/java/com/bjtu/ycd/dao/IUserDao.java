@@ -6,4 +6,5 @@ import com.bjtu.ycd.vo.User;
 @MapperScan
 public interface IUserDao {
 	public User getUserByName(User user);
+	public int insertByUser(User user);
 }

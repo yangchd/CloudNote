@@ -23,11 +23,33 @@
 
     <div class="container">
       <form class="form-signin" role="form">
-        <h2 class="form-signin-heading">Login</h2>
-        <!-- required -->
-        <input type="text" class="form-control" id="username" placeholder="Email or Phone"  autofocus>
-        <input type="password" class="form-control" id="password" placeholder="Password" >
-        <input type="button" class="btn btn-lg btn-primary btn-block" id="loginbtn" value="Sign in"/>
+			<div class="panel panel-default">
+			
+				<!-- 这里是登录界面的框框 -->
+				<div class="panel-heading">
+					<h3 class="panel-title">云笔记系统</h3>
+				</div>
+				<div class="panel-body">
+					<div class="input-group">
+						 <span class="input-group-addon" id="basic-addon1">用户：</span>
+						 <input type="text" class="form-control" id="username" placeholder="Email or Phone"  autofocus>
+					</div>
+					<div class="input-group">
+						 <span class="input-group-addon" id="basic-addon1">密码：</span>
+						 <input type="password" class="form-control" id="password" placeholder="Password" >
+					</div>
+					
+	        		<input type="button" class="btn btn-lg btn-primary btn-block" id="loginbtn" value="Sign in"/>
+	        		
+	        		<div class="row">
+					  <div class="col-xs-4"></div>
+					  <div class="col-xs-4">忘记密码</div>
+					  <div class="col-xs-4" id='register'>免费注册</div>
+					</div>
+	        		
+				</div>
+			</div>
+        
       </form>
     </div> <!-- /container -->
 

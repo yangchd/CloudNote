@@ -20,5 +20,10 @@ public class LoginServiceImpl implements ILoginService {
 		return this.userDao.getUserByName(user);
 	}
 
+	@Override
+	public int insertByUser(User user) {
+		return this.userDao.insertByUser(user);
+	}
+
 
 }

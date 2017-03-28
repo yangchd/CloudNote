@@ -13,6 +13,10 @@
 	 		</if>
 	 	</select>
 	 	
+	 	<insert id="insertByUser" parameterType="com.bjtu.ycd.vo.User" >
+	 		insert into cn_user(id,username,password,mobile,email) 
+	 		values(#{id},#{username},#{password},#{mobile},#{email})
+	 	</insert>
 	 	
 	</mapper>
 	

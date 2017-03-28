@@ -7,7 +7,7 @@ body {
 }
 
 .form-signin {
-  max-width: 330px;
+  max-width: 450px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -32,12 +32,31 @@ body {
   z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
+  margin-bottom: 0px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+	margin-bottom: 0px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.input-group{
+	margin-bottom: 15px;
+}
+
+.row{
+	margin-bottom: 15px;
+	margin-top:15px;
+}
+
+.panel-body{
+	padding-left: 50px;
+    padding-right: 50px;
+}
+
+#register-right{
+	min-width: 40px;
+	background-color: white;
 }

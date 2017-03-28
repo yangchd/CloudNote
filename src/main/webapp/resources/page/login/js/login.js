@@ -29,4 +29,10 @@ window.onload = function(){
 			}
 		});
 	})
+	
+	
+	//免费注册按钮动作添加
+	$('#register').on('click',function(){
+		window.location.href=getUrl()+"/page/login/register.jsp";
+	})
 }

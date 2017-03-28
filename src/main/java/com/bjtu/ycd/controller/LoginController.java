@@ -56,7 +56,7 @@ public class LoginController {
     	
     	if(loginFlag==0){
     		rMap.put("retflag", "1");
-    		rMap.put("msg", "输入的用户名格式错误!");
+    		rMap.put("msg", "输入的用户名有误，请确认！");
     		return rMap;
     	}
     	
