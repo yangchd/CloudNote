@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>主页</title>
+<title>云笔记系统</title>
 
 <link href="../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="../../resources/page/homepage/css/homePage.css" rel="stylesheet">
 
-<script type="text/javascript" src="../../resources/page/homepage/js/homePage.js"></script>
 <script type="text/javascript" src="../../resources/jquery.js"></script>
+<script type="text/javascript" src="../../resources/tool.js"></script>
 <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../../resources/page/homepage/js/homePage.js"></script>
 
 </head>
 
@@ -30,7 +32,7 @@
 	              <span class="icon-bar"></span>
 	              <span class="icon-bar"></span>
 	            </button>
-	            <a class="navbar-brand" href="#">CodeStation</a>
+	            <a class="navbar-brand" href="">主页</a>
 	          </div>
 	          <div id="navbar" class="navbar-collapse collapse">
 	            <ul class="nav navbar-nav" id="homePage_ul">
@@ -38,7 +40,7 @@
 	              <li><a href="#">Link</a></li>
 	              <li><a href="#">Link</a></li>
 	              <li class="dropdown">
-	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <span class="caret"></span></a>
 	                <ul class="dropdown-menu" role="menu">
 	                  <li><a href="#">Action</a></li>
 	                  <li><a href="#">Another action</a></li>
@@ -50,17 +52,14 @@
 	                </ul>
 	              </li>
 	            </ul>
-	             <form class="navbar-form navbar-right" role="form">
-		          </form>
 	          </div><!--/.nav-collapse -->
 	        </div><!--/.container-fluid -->
 	      </nav>
 	
 	      <!-- 上部图文区 -->
 	      <div class="jumbotron">
-	        <h1>Personal Page</h1>
-	        <p>This example is a quick exercise . It includes the responsive CSS and HTML</p>
-	        <p>Author：杨昌迪</p>
+	        <h1>欢迎使用云笔记系统</h1>
+	        <p>作者：杨昌迪</p>
 	        <p>
 	          <a class="btn btn-lg btn-primary" href="../errorPage/notOpenPage.html" role="button">View details &raquo;</a>
 	        </p>
@@ -71,27 +70,26 @@
 	<div class="container" id="homePage_middle">
 		<div class="row" style="text-align: center;">
             <div class="col-md-4">
-	          <h2>Exercise Code</h2>
-	          <p>There's something code write during study.</p>
-	          <p><a class="btn btn-default" href="" role="button">View details &raquo;</a></p>
+	          <h2>我的笔记本</h2>
+	          <p>在这里你能看到自己所存储的信息</p>
+	          <p><a class="btn btn-default" href="javascript:;" role="button" id="personalbtn">点我查看详情 &raquo;</a></p>
 	        </div>
             <div class="col-md-4">
-	          <h2>weibo</h2>
-	          <p>There's nothing here.</p>
-	          <p><a class="btn btn-default" href="" role="button">View details &raquo;</a></p>
+	          <h2>我的小组</h2>
+	          <p>在这里你能看到和其他小伙伴一起存储的信息</p>
+	          <p><a class="btn btn-default" href="" role="button">点我查看详情 &raquo;</a></p>
 	        </div>
             <div class="col-md-4">
-	          <h2>Cloud notes</h2>
-			  <p>There's nothing here.</p>
-			  <p><a class="btn btn-default" href="../CloudNote/cloudNotePage.html" role="button">View details &raquo;</a></p>
+	          <h2>随便逛逛</h2>
+			  <p>这里或许你能找到不认识的小伙伴的资料</p>
+			  <p><a class="btn btn-default" href="../CloudNote/cloudNotePage.html" role="button">点我查看详情 &raquo;</a></p>
 	        </div>
         </div>
-        <footer style="text-align: center;">
+	</div>
+	<div class="homePage_bottom"  id="homePage_bottom">
+		<footer style="text-align: center;margin-top: 50px;">
         	<p>&copy; The website is made by Yang Changdi</p>
       	</footer>
-	</div>
-	<div id="homePage_bottom">
-		
 	</div>
 </body>
 </html>

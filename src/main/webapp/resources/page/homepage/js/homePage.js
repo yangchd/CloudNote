@@ -32,4 +32,11 @@ window.onload = function(){
 	});
 	
 	addactive();//调用该函数添加鼠标滑过时的动画效果
+	
+	
+	$('#personalbtn').on('click',function(){
+		window.location.href=getUrl()+"/page/homepage/notebookPage.jsp";
+	})
+	
+	
 }
