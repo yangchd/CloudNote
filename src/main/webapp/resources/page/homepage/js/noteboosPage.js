@@ -41,3 +41,26 @@ layui.use('layedit', function(){
 	    ,height: 100
 	  })
 	});
+
+
+
+
+
+
+window.onload = function(){addbtn
+	$('#addbtn').on('click',function(){
+		$('#addbtn_panel').css("display","block");
+	})
+	$('#canceladdbtn').on('click',function(){
+		//在关闭这个页面之前，最好做重置，等待重置按钮在后续优化
+		$('#addbtn_panel').css("display","none");
+	})
+	$('#editbtn').on('click',function(){
+		$('#editbtn_panel').css("display","block");
+	})
+	$('#canceleditbtn').on('click',function(){
+		//在关闭这个页面之前，最好做重置，等待重置按钮在后续优化
+		$('#editbtn_panel').css("display","none");
+	})
+	
+}

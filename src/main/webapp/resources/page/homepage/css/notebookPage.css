@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+
+#xiala{
+	padding:0px;
+	width: initial;
+}
+
+
+#navigation{
+	margin-bottom: 20px;
+}
+
+.col-md-6{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.col-md-4{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.form-inline{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+
+#notebookPage_navigation{
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.form-control{
+	width: inherit;
+}
