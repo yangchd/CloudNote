@@ -1,11 +1,11 @@
 package com.bjtu.ycd.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +23,12 @@ public class LoginController {
 	
 	@Resource
 	private User user;
+
+	@Resource
+	private LoggerUtil logger;
+	
+	@Resource
+	private Tool tool;
 	
 	@Resource
 	private ILoginService loginService;
@@ -31,9 +37,7 @@ public class LoginController {
     @ResponseBody
     public Map<String, Object> getLogin(User loginuser){
     	Map<String, Object> rMap = new HashMap<String, Object>();
-    	Logger logger = Logger.getLogger(LoggerUtil.class);
-    	logger.info("login/getLogin请求: username:"+loginuser.getUsername()+" --- password:"+loginuser.getPassword()+"\r\n");
-    	
+    	logger.info("用户["+loginuser.getUsername()+"]发起登陆请求 密码["+loginuser.getPassword()+"]\r\n");
     	if(loginuser.getUsername()==null||"".equals(loginuser.getUsername())){
     		rMap.put("retflag", "1");
     		rMap.put("msg", "请输入用户名");
@@ -45,29 +49,30 @@ public class LoginController {
     		return rMap;
     	}
     	user.setPassword(loginuser.getPassword());
-    	int loginFlag = 0;//用户参数标志位，0代表不是邮箱也不是手机号，登录失败，1代表进行登录操作
-    	if (Tool.isEmail(loginuser.getUsername())) {
-			user.setEmail(loginuser.getUsername());
-			loginFlag = 1;
-		}else if(Tool.isMobile(loginuser.getUsername())){
-			user.setMobile(loginuser.getUsername());
-			loginFlag = 1;
-		}
     	
-    	if(loginFlag==0){
+    	int loginflag = 0;
+    	if (tool.isEmail(loginuser.getUsername())) {
+			user.setEmail(loginuser.getUsername());
+			loginflag = 1;
+		}else if(tool.isMobile(loginuser.getUsername())){
+			user.setMobile(loginuser.getUsername());
+			loginflag = 1;
+		}
+    	if(loginflag==0){
     		rMap.put("retflag", "1");
     		rMap.put("msg", "输入的用户名有误，请确认！");
     		return rMap;
     	}
     	
-    	User reuser = loginService.getUserByName(user);
-    	if(reuser==null||"".equals(reuser)){
+    	
+    	List<User> reuser = loginService.getUserByName(user);
+    	if(reuser==null||reuser.size()==0){
     		rMap.put("retflag", "1");
     		rMap.put("msg", "输入的用户不存在，请确认！");
     		return rMap;
     	}else{
     		//进行密码判断
-    		if(reuser.getPassword().equals(user.getPassword())){
+    		if(reuser.get(0).getPassword().equals(user.getPassword())){
     			//进行登录操作
         		rMap.put("retflag", "0");
         		rMap.put("msg", "登录成功");

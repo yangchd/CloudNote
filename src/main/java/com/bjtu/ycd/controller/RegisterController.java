@@ -1,12 +1,15 @@
 package com.bjtu.ycd.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,39 +28,77 @@ public class RegisterController {
 	private User user;
 	
 	@Resource
+	private LoggerUtil logger;
+	
+	@Resource
 	private ILoginService loginService;
     
+	
+	/**
+	 * 检验是否存在重复函数
+	 * @param loginuser
+	 * @return
+	 */
     @RequestMapping(value="/repeat",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getLogin(User loginuser){
     	Map<String, Object> rMap = new HashMap<String, Object>();
-    	Logger logger = Logger.getLogger(LoggerUtil.class);
-//    	String email = loginuser.getEmail();
-//    	String mobile = loginuser.getMobile();
-    	
+    	List<User>  reuser = new ArrayList<User>();
     	user = loginuser;
-    	
-    	User reuser = loginService.getUserByName(user);
-    	
-    	if(reuser==null||"".equals(reuser)){
-    		rMap.put("retflag", "0");
-    		rMap.put("msg", "通过验证！");
-    		return rMap;
+    	try {
+    		if(loginuser.getUsername()!=null&&!"".equals(loginuser.getUsername())){
+    			String username = new String(loginuser.getUsername().getBytes("iso-8859-1"),"utf-8");
+    			user.setUsername(username);
+    		}
+		} catch (UnsupportedEncodingException e) {
+			logger.info(e.getMessage());
+		}
+    	//先校验正确性
+    	String check = loginService.isEmailOrMobile(user);
+    	//没有格式问题，则进行重复校验
+    	if(check==null||"".equals(check)){
+    		reuser = loginService.getUserByName(user);
+    		if(reuser==null||"".equals(reuser)||reuser.size()==0){
+    			rMap.put("retflag", "0");
+    			rMap.put("msg", "通过验证！");
+    			return rMap;
+    		}else{
+    			rMap.put("retflag", "1");
+    			rMap.put("msg", "已经被注册！");
+    			return rMap;
+    		}
     	}else{
-    		//如果查到数据，说明已经被注册
-    		rMap.put("retflag", "1");
-    		rMap.put("msg", "已经被注册！");
-    		return rMap;
+    		if("email".equals(check)){
+    			rMap.put("retflag", "1");
+    			rMap.put("msg", "email");
+    			return rMap;
+    		}else{
+    			rMap.put("retflag", "1");
+    			rMap.put("msg", "mobile");
+    			return rMap;
+    		}
     	}
+    	
     }
     
+    /**
+     * 注册用户函数
+     * @param loginuser
+     * @return
+     */
     @RequestMapping(value="/insert",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> insertRegister(User loginuser){
     	Map<String, Object> rMap = new HashMap<String, Object>();
+    	
     	user = loginuser;
     	user.setId(UUID.randomUUID().toString());
-    	
+    	try {
+    		String username = new String(loginuser.getUsername().getBytes("iso-8859-1"),"utf-8");
+    		user.setUsername(username);
+		} catch (UnsupportedEncodingException e) {
+			logger.info(e.getMessage());
+		}
     	int i = loginService.insertByUser(user);
     	
     	if(i>0){
@@ -70,5 +111,5 @@ public class RegisterController {
     		return rMap;
     	}
     }
-	
+    
 }

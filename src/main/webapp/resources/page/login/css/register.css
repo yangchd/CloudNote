@@ -3,7 +3,13 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background-color: white;
+}
+
+.title-register{
+	max-width: 600px;
+  	padding: 15px;
+  	margin: 0 auto;
 }
 
 .form-signin {
@@ -61,11 +67,10 @@ body {
 	background-color: white;
 }
 
-#login_title{
+.login_title{
 	padding-top: 8px;
-	padding-bottom: 8px;
+	padding-bottom: 12px;
 }
-
 
 
 
