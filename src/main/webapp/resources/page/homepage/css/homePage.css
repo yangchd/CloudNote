@@ -53,5 +53,11 @@ body {
     top: 0;
     width: 50%; /* 6 columns */
   }
+  
+  #homePage_middle h1, .h1, h2, .h2, h3, .h3{
+  	margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
 
 }

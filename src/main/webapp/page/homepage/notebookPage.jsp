@@ -11,15 +11,18 @@
 <link href="../../resources/page/homepage/css/homePage.css" rel="stylesheet">
 <link href="../../resources/page/homepage/css/notebookPage.css" rel="stylesheet">
 <script type="text/javascript" src="../../resources/page/homepage/js/noteboosPage.js"></script>
+<script type="text/javascript" src="../../resources/page/homepage/js/homeTitle.js"></script>
 
 </head>
 <body>
 
 	<div id="notebookPage_top">
 		<div class="container">
+		<nav class="navbar navbar-default" role="navigation">
 		  <div id="homeTitle">
 	      		<!-- 这里加载homeTitle页面 -->
 	      </div>
+		</nav>
 		</div>
 	</div>
 	

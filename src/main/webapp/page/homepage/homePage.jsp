@@ -16,9 +16,11 @@
 <body>
 	<div id="homePage_top">
 		<div class="container">
+		<nav class="navbar navbar-default" role="navigation">
 	      <div id="homeTitle">
 	      		<!-- 这里加载homeTitle页面 -->
 	      </div>
+		</nav>
 	
 	      <!-- 上部图文区 -->
 	      <div class="jumbotron">
