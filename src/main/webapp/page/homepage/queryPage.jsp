@@ -39,15 +39,14 @@
 							<button class="btn btn-default" type="button">搜索</button>
 						</span>
 					</div>
+					<div class="notebooklist">
+						<!-- 这里加载笔记本列表 -->
+					</div>
 				</div>
 				<div class="col-md-9">
-					
+					<div class="textareaPage">
+					</div>
 				</div>
-				<div class="col-md-12">
-					<textarea class="layui-textarea">
-					</textarea>
-				</div>
-				
 			</div>
 		</div>
 	</div>

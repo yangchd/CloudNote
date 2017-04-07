@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+.newteam{
+	max-width: 400px;
+  	padding: 15px;
+  	margin: 0 auto;
+}
+
+.form-signin {
+  max-width: 600px;
+  padding: 15px;
+  margin: 0 auto;
+}

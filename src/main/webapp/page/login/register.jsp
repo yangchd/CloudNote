@@ -28,7 +28,7 @@
 			</ul>
 		</div>
 		
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" style="text-align: center;">
 					<!-- 
 							<div class="layui-form-mid layui-word-aux" style="font-size: 18px;color: green;">
 								<span class='glyphicon glyphicon-ok'></span>
@@ -49,7 +49,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="layui-form-item">
+					<div class="layui-form-item" >
 						<div class="layui-inline">
 							<label class="layui-form-label">邮箱</label>
 							<div class="layui-input-inline">

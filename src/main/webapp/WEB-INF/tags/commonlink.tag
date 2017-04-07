@@ -10,3 +10,5 @@
 <script type="text/javascript" src="../../resources/layui/layui.js"></script>
 
 <script type="text/javascript" src="../../resources/page/homepage/js/homeTitle.js"></script>
+<script type="text/javascript" src="../../resources/page/homepage/js/textareaPage.js"></script>
+<script type="text/javascript" src="../../resources/page/homepage/js/notebooklist.js"></script>
