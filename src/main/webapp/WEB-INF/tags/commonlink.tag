@@ -8,3 +8,5 @@
 
 <link href="../../resources/layui/css/layui.css" rel="stylesheet">
 <script type="text/javascript" src="../../resources/layui/layui.js"></script>
+
+<script type="text/javascript" src="../../resources/page/homepage/js/homeTitle.js"></script>

@@ -24,10 +24,10 @@
 	
 	      <!-- 上部图文区 -->
 	      <div class="jumbotron">
-	        <h1>欢迎使用云笔记系统</h1>
+	        <h1 style="padding-bottom: 12px;">欢迎使用云笔记系统</h1>
 	        <p>作者：杨昌迪</p>
 	        <p>
-	          <a class="btn btn-lg btn-primary" href="../errorPage/notOpenPage.html" role="button">View details &raquo;</a>
+	          <a class="btn btn-lg btn-primary" href="../errorPage/notOpenPage.html" role="button">查看详情 &raquo;</a>
 	        </p>
 	      </div>
 	    </div>
@@ -36,19 +36,19 @@
 	<div class="container" id="homePage_middle">
 		<div class="row" style="text-align: center;">
             <div class="col-md-4">
-	          <h2>我的笔记本</h2>
-	          <p>在这里你能看到自己所存储的信息</p>
-	          <p><a class="btn btn-default" href="javascript:;" role="button" id="personalbtn">点我查看详情 &raquo;</a></p>
+	          <h2 style="padding-bottom: 12px;">我的空间</h2>
+	          <p style="padding-bottom: 12px;">在这里你能看到自己所存储的信息</p>
+	          <p style="padding-bottom: 12px;"><a class="btn btn-default" href="javascript:;" role="button" id="personalbtn">点我查看详情 &raquo;</a></p>
 	        </div>
             <div class="col-md-4">
-	          <h2>我的小组</h2>
-	          <p>在这里你能看到和其他小伙伴一起存储的信息</p>
-	          <p><a class="btn btn-default" href="" role="button">点我查看详情 &raquo;</a></p>
+	          <h2 style="padding-bottom: 12px;">我的小组</h2>
+	          <p style="padding-bottom: 12px;">在这里你能看到和其他小伙伴一起存储的信息</p>
+	          <p style="padding-bottom: 12px;"><a class="btn btn-default" href="javascript:;" role="button" id="teambtn">点我查看详情 &raquo;</a></p>
 	        </div>
             <div class="col-md-4">
-	          <h2>随便逛逛</h2>
-			  <p>这里或许你能找到不认识的小伙伴的资料</p>
-			  <p><a class="btn btn-default" href="../CloudNote/cloudNotePage.html" role="button">点我查看详情 &raquo;</a></p>
+	          <h2 style="padding-bottom: 12px;">随便逛逛</h2>
+			  <p style="padding-bottom: 12px;">这里或许你能找到你需要的资料</p>
+			  <p style="padding-bottom: 12px;"><a class="btn btn-default" href="javascript:;" role="button" id="querybtn">点我查看详情 &raquo;</a></p>
 	        </div>
         </div>
 	</div>

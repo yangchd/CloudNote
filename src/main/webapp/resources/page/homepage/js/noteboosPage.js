@@ -4,7 +4,6 @@ layui.use(['tree', 'layer'], function(){
   var layer = layui.layer
   ,$ = layui.jquery; 
   
-  
   //去后台制作一个json返回，然后这里调用
   var str = [ //节点
               {
@@ -37,7 +36,7 @@ layui.use(['tree', 'layer'], function(){
   
   //生成树的函数
   layui.tree({
-    elem: '#pwdtree' //指定元素
+    elem: '.pwdtree' //指定元素
     ,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
     ,click: function(item){ //点击节点回调
       layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
@@ -46,7 +45,7 @@ layui.use(['tree', 'layer'], function(){
     ,nodes: str
   });
   layui.tree({
-	    elem: '#addtree' //指定元素
+	    elem: '.addtree' //指定元素
 	    ,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
 	    ,click: function(item){ //点击节点回调
 	      layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
@@ -55,7 +54,7 @@ layui.use(['tree', 'layer'], function(){
 	    ,nodes: str
 	  });
   layui.tree({
-	  elem: '#movetreeone' //指定元素
+	  elem: '.movetreeone' //指定元素
 		  ,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
 			  ,click: function(item){ //点击节点回调
 				  layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
@@ -64,7 +63,16 @@ layui.use(['tree', 'layer'], function(){
   ,nodes: str
   });
   layui.tree({
-	  elem: '#movetreetwo' //指定元素
+	  elem: '.movetreetwo' //指定元素
+		  ,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
+			  ,click: function(item){ //点击节点回调
+				  layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
+//	      console.log(item);
+			  }
+  ,nodes: str
+  });
+  layui.tree({
+	  elem: '.deletetree' //指定元素
 		  ,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
 			  ,click: function(item){ //点击节点回调
 				  layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
@@ -75,9 +83,6 @@ layui.use(['tree', 'layer'], function(){
   
 });
   
-
-
-
 
 
 
@@ -129,6 +134,15 @@ layui.use('layedit', function(){
 
 
 window.onload = function(){
+	//页面加载部分
+	$("#homeTitle").load("homeTitle.jsp", function() {
+		homeTitle();
+    });
+	$(".notebooklist").load("notebooklist.jsp", function() {
+	});
+	
+	
+	
 	$('#addbtn').on('click',function(){
 		$('#addbtn_panel').css("display","block");
 	})
@@ -142,6 +156,13 @@ window.onload = function(){
 	$('#canceleditbtn').on('click',function(){
 		//在关闭这个页面之前，最好做重置，等待重置按钮在后续优化
 		$('#editbtn_panel').css("display","none");
+	})
+	$('#deletebtn').on('click',function(){
+		$('#deletebtn_panel').css("display","block");
+	})
+	$('#canceldeletebtn').on('click',function(){
+		//在关闭这个页面之前，最好做重置，等待重置按钮在后续优化
+		$('#deletebtn_panel').css("display","none");
 	})
 	
 	$('#gotohomepagebtn').on('click',function(){

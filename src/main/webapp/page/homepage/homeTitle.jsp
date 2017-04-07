@@ -16,27 +16,28 @@
 	            <a class="navbar-brand" id="gotohomepage" href="javascript:;">主页</a>
 	          </div>
 	          <div id="navbar" class="navbar-collapse collapse">
-	            <ul class="nav navbar-nav" id="homePage_ul">
-	              <li><a href="javascript:;">我的空间</a></li>
-	              <li><a href="javascript:;">我的小组</a></li>
-	              <li class="dropdown">
-	                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">更多 <span class="caret"></span></a>
-	                <ul class="dropdown-menu" role="menu">
-	                  <li><a href="javascript:;">待定一</a></li>
-	                  <li><a href="javascript:;">待定二</a></li>
-	                  <li><a href="javascript:;">待定三</a></li>
-	                  <li class="divider"></li>
-	                  <li class="dropdown-header">我是分割线</li>
-	                  <li><a href="javascript:;">未完成一</a></li>
-	                  <li><a href="javascript:;">未完成二</a></li>
-	                </ul>
-	              </li>
+	            <ul class="nav navbar-nav">
+	              <li><a href="javascript:;" id="gotonotepage">我的空间</a></li>
+	              <li><a href="javascript:;" id="gototeampage">我的小组</a></li>
 	            </ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="javascript:;">个人名字显示</a></li>
-				<li><a href="javascript:;">设置</a></li>
+				<li class="dropdown">
+					<a href="javascript:;"
+						class="dropdown-toggle" data-toggle="dropdown">选项 
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">个人信息</a></li>
+						<li><a href="javascript:;">修改密码</a></li>
+						<li><a href="javascript:;">待定</a></li>
+						<li class="divider"></li>
+						<li class="dropdown-header">其他</li>
+						<li><a href="javascript:;" id="logoutbtn">退出登录</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div><!--/.nav-collapse -->
-	        </div><!--/.container-fluid -->
+	  </div><!--/.container-fluid -->
 </body>
 </html>
