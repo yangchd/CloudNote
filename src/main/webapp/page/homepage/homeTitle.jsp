@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+<!-- 这个导入其实没有作用，就是方便查看 -->
+<script type="text/javascript" src="../../resources/page/homepage/js/homeTitle.js"></script>
+
 <body>
  <!-- 上部菜单栏 -->
 	        <div class="container-fluid">
@@ -21,19 +25,19 @@
 	              <li><a href="javascript:;" id="gototeampage">我的小组</a></li>
 	            </ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="javascript:;">个人名字显示</a></li>
+				<li><a href="javascript:;">欢迎：个人名字</a></li>
 				<li class="dropdown">
 					<a href="javascript:;"
 						class="dropdown-toggle" data-toggle="dropdown">选项 
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="javascript:;">个人信息</a></li>
+						<li><a href="javascript:;" id="gotopersonpage">个人信息</a></li>
 						<li><a href="javascript:;">修改密码</a></li>
 						<li><a href="javascript:;">待定</a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">其他</li>
-						<li><a href="javascript:;" id="logoutbtn">退出登录</a></li>
+						<li><a href="javascript:;" id="logoutbtn">注销登录</a></li>
 					</ul>
 				</li>
 			</ul>

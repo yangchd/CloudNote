@@ -1,9 +1,12 @@
 
 
 window.onload = function(){
+	//界面加载
 	$("#homeTitle").load("homeTitle.jsp", function() {
 		homeTitle();
     });
+	
+	//三个模块跳转
 	$('#personalbtn').on('click',function(){
 		window.location.href=getUrl()+"/page/homepage/notebookPage.jsp";
 	})

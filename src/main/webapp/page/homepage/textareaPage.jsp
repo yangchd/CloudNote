@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+<!-- 这个导入其实没有作用，就是方便查看 -->
+<script type="text/javascript" src="../../resources/page/homepage/js/textareaPage.js"></script>
+
 <body>
 					<div class="textword">
 						<span>名称：测试笔记本一</span>

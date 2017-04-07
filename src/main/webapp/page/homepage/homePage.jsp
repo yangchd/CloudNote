@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>云笔记系统</title>
-
 <mx:commonlink/>
 <link href="../../resources/page/homepage/css/homePage.css" rel="stylesheet">
 <script type="text/javascript" src="../../resources/page/homepage/js/homePage.js"></script>

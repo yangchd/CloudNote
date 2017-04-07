@@ -15,4 +15,8 @@ function homeTitle(){
 	$('#logoutbtn').on('click',function(){
 		window.location.href=getUrl()+"/page/login/login.jsp";
 	})
+	$('#gotopersonpage').on('click',function(){
+		window.location.href=getUrl()+"/page/homepage/personPage.jsp";
+	})
+	
 }

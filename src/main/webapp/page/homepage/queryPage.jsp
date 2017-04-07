@@ -8,7 +8,6 @@
 <title>查询界面</title>
 
 <mx:commonlink/>
-<link href="../../resources/page/homepage/css/homePage.css" rel="stylesheet">
 <script type="text/javascript" src="../../resources/page/homepage/js/queryPage.js"></script>
 
 </head>

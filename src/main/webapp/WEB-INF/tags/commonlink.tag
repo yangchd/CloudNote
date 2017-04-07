@@ -12,3 +12,5 @@
 <script type="text/javascript" src="../../resources/page/homepage/js/homeTitle.js"></script>
 <script type="text/javascript" src="../../resources/page/homepage/js/textareaPage.js"></script>
 <script type="text/javascript" src="../../resources/page/homepage/js/notebooklist.js"></script>
+
+<link href="../../resources/page/homepage/css/allPage.css" rel="stylesheet">

@@ -8,7 +8,6 @@
 <title>我的小组</title>
 <mx:commonlink/>
 
-<link href="../../resources/page/homepage/css/homePage.css" rel="stylesheet">
 <link href="../../resources/page/homepage/css/teamPage.css" rel="stylesheet">
 <script type="text/javascript" src="../../resources/page/homepage/js/teamPage.js"></script>
 
@@ -199,7 +198,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<p>我的小组
-					<a><span class="glyphicon glyphicon-plus" id="addbtn" style="padding-left: 50px;"></span></a>
+					<a  id="addbtn" style="padding-left: 50px;"><span>创建小组</span><span class="glyphicon glyphicon-plus"></span></a>
 					<a><span class="glyphicon glyphicon-cog" style="padding-left: 20px;"></span></a>
 					</p>
 				</div>
