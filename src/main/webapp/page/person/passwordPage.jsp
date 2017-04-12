@@ -5,13 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>个人信息</title>
+<title>修改密码</title>
 <mx:commonlink/>
-<script type="text/javascript" src="../../resources/page/homepage/js/personPage.js"></script>
-
+<script type="text/javascript" src="../../resources/page/person/js/passwordPage.js"></script>
 </head>
 <body>
-
 		<div class="container">
 			<nav class="navbar navbar-default" role="navigation">
 			  <div id="homeTitle">
@@ -19,33 +17,22 @@
 		      </div>
 			</nav>
 		</div>
+		
 		<div class="container">
 			<div class="persontitle">
 				<ul class="nav nav-tabs">
 					<li role="presentation">
-						<h3 class="panel-title login_title">个人信息</h3>
+						<h3 class="panel-title login_title">修改密码</h3>
 					</li>
 				</ul>
 			</div>
 			<form class="form-signin" role="form" style="text-align: center;">
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<label class="layui-form-label">昵称</label>
+							<label class="layui-form-label">旧密码</label>
 							<div class="layui-input-inline" >
 								<div>
-									<input type="text" class="form-control" id="username" placeholder="输入你喜欢的昵称"  autofocus>
-								</div>
-							</div>
-							<div class="layui-form-mid layui-word-aux" id="addrepeat" style="font-size: 18px;color: green;">
-							</div>
-						</div>
-					</div>
-					<div class="layui-form-item" >
-						<div class="layui-inline">
-							<label class="layui-form-label">邮箱</label>
-							<div class="layui-input-inline">
-								<div class="">
-									<input type="text" class="form-control"  id="email" placeholder="Email">
+									<input type="text" class="form-control" placeholder="Password"  autofocus>
 								</div>
 							</div>
 							<div class="layui-form-mid layui-word-aux" id="addrepeat" style="font-size: 18px;color: green;">
@@ -54,19 +41,7 @@
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<label class="layui-form-label">手机</label>
-							<div class="layui-input-inline">
-								<div class="">
-									<input type="text" class="form-control" id="mobile" placeholder="Mobile" >
-								</div>
-							</div>
-							<div class="layui-form-mid layui-word-aux" id="addrepeat" style="font-size: 18px;color: green;">
-							</div>
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<div class="layui-inline">
-							<label class="layui-form-label">密码</label>
+							<label class="layui-form-label">新密码</label>
 							<div class="layui-input-inline">
 								<div class="">
 									<input type="password" class="form-control"  id="passwordone" placeholder="Password">
@@ -88,12 +63,21 @@
 							</div>
 						</div>
 					</div>
-					<div style="padding-left: 30px;padding-right: 30px;">
-	        		<input type="button" class="btn btn-lg btn-primary btn-block" id="registerbtn" value="确认修改"/>
+      		</form>
+      			<form class="form-signin" style="text-align: center;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<input class="btn btn-default" type="button" value="确认修改">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<input class="btn btn-default" type="button" value="取消修改">
+							</div>
+						</div>
 					</div>
-	        		
-      </form>
-		
+				</form>
 		</div>
 </body>
 </html>

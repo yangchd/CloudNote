@@ -1,10 +1,12 @@
 package com.bjtu.ycd.controller;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +37,7 @@ public class LoginController {
     
     @RequestMapping(value="/getLogin",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> getLogin(User loginuser){
+    public Map<String, Object> getLogin(User loginuser,HttpSession httpSession){
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	logger.info("用户["+loginuser.getUsername()+"]发起登陆请求 密码["+loginuser.getPassword()+"]\r\n");
     	if(loginuser.getUsername()==null||"".equals(loginuser.getUsername())){
@@ -74,6 +76,8 @@ public class LoginController {
     		//进行密码判断
     		if(reuser.get(0).getPassword().equals(user.getPassword())){
     			//进行登录操作
+    			httpSession.setAttribute("userid", reuser.get(0).getId());
+    			httpSession.setAttribute("username", reuser.get(0).getUsername());
         		rMap.put("retflag", "0");
         		rMap.put("msg", "登录成功");
         		return rMap;
@@ -83,5 +87,37 @@ public class LoginController {
         		return rMap;
     		}
     	}
+    }
+    
+    @RequestMapping(value="/getSession",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getSession(User loginuser,HttpSession httpSession){
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	String userid = httpSession.getAttribute("userid")==null?"":httpSession.getAttribute("userid").toString();
+    	String username = httpSession.getAttribute("username")==null?"":httpSession.getAttribute("username").toString();
+    	if(!"".equals(userid) && !"".equals(username)){
+    		rMap.put("retflag", "0");
+    		rMap.put("userid", userid);
+    		rMap.put("username", username);
+    		rMap.put("msg", "session获取成功");
+    	}else{
+    		rMap.put("retflag", "1");
+    		rMap.put("msg", "session获取失败");
+    	}
+    	return rMap;
+    }
+    
+    @RequestMapping(value="/logout",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> logOut(User loginuser,HttpSession httpSession){
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	
+    	Enumeration<String> em = httpSession.getAttributeNames();
+    	while(em.hasMoreElements()){
+    		httpSession.removeAttribute(em.nextElement().toString());
+    	}
+    	rMap.put("retflag", "0");
+    	rMap.put("msg", "注销成功");
+    	return rMap;
     }
 }  
