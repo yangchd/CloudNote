@@ -24,9 +24,10 @@
 	      <!-- 上部图文区 -->
 	      <div class="jumbotron">
 	        <h1 style="padding-bottom: 12px;">欢迎使用云笔记系统</h1>
-	        <p>作者：杨昌迪</p>
-	        <p>
-	          <a class="btn btn-lg btn-primary" href="../errorPage/notOpenPage.html" role="button">查看详情 &raquo;</a>
+	        
+	        <p class="lastnote">
+	        	代办工作：某某某笔记
+	          <a class="btn btn-primary" href="javascript:;" id="lastbtn" role="button">点我查看详情 &raquo;</a>
 	        </p>
 	      </div>
 	    </div>
@@ -37,17 +38,17 @@
             <div class="col-md-4">
 	          <h2 style="padding-bottom: 12px;">我的空间</h2>
 	          <p style="padding-bottom: 12px;">在这里你能看到自己所存储的信息</p>
-	          <p style="padding-bottom: 12px;"><a class="btn btn-default" href="javascript:;" role="button" id="personalbtn">点我查看详情 &raquo;</a></p>
+	          <p style="padding-bottom: 12px;"><a class="btn btn-primary" href="javascript:;" role="button" id="personalbtn">点我查看详情 &raquo;</a></p>
 	        </div>
             <div class="col-md-4">
 	          <h2 style="padding-bottom: 12px;">我的小组</h2>
 	          <p style="padding-bottom: 12px;">在这里你能看到和其他小伙伴一起存储的信息</p>
-	          <p style="padding-bottom: 12px;"><a class="btn btn-default" href="javascript:;" role="button" id="teambtn">点我查看详情 &raquo;</a></p>
+	          <p style="padding-bottom: 12px;"><a class="btn btn-primary" href="javascript:;" role="button" id="teambtn">点我查看详情 &raquo;</a></p>
 	        </div>
             <div class="col-md-4">
 	          <h2 style="padding-bottom: 12px;">随便逛逛</h2>
 			  <p style="padding-bottom: 12px;">这里或许你能找到你需要的资料</p>
-			  <p style="padding-bottom: 12px;"><a class="btn btn-default" href="javascript:;" role="button" id="querybtn">点我查看详情 &raquo;</a></p>
+			  <p style="padding-bottom: 12px;"><a class="btn btn-primary" href="javascript:;" role="button" id="querybtn">点我查看详情 &raquo;</a></p>
 	        </div>
         </div>
 	</div>

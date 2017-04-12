@@ -16,6 +16,9 @@ window.onload = function(){
 	$('#querybtn').on('click',function(){
 		window.location.href=getUrl()+"/page/homepage/queryPage.jsp";
 	})
+	$('#lastbtn').on('click',function(){
+		window.location.href=getUrl()+"/page/homepage/notebookPage.jsp";
+	})
 	
 
 	

@@ -8,7 +8,6 @@
 
 <body>
 	<div class="panel panel-default">
-		<div class="panel-heading">默认分组</div>
 		<div class="list-group">
 			<a href="javascript:;" class="list-group-item">
 				<h1 class="list-group-item-heading">某某某笔记本</h1>

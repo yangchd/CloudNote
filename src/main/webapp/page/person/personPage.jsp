@@ -33,7 +33,7 @@
 							<label class="layui-form-label">昵称</label>
 							<div class="layui-input-inline" >
 								<div>
-									<input type="text" class="form-control" id="username" value="昵称" >
+									<input type="text" class="form-control" id="username" value="杨昌迪" >
 								</div>
 							</div>
 							<div class="layui-form-mid layui-word-aux" id="addrepeat" style="font-size: 18px;color: green;">
@@ -45,7 +45,7 @@
 							<label class="layui-form-label">邮箱</label>
 							<div class="layui-input-inline">
 								<div class="">
-									<input type="text" class="form-control"  id="email" value="123@test.com">
+									<input type="text" class="form-control"  id="email" value="369271317@qq.com">
 								</div>
 							</div>
 							<div class="layui-form-mid layui-word-aux" id="addrepeat" style="font-size: 18px;color: green;">
