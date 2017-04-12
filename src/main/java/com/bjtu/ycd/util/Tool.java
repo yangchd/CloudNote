@@ -16,6 +16,10 @@ public class Tool {
 		String rule = "\\w+\\x40\\w+\\x2e\\w+";
 		if (email.matches(rule)) {
 			flag = true;
+		}else{
+			if(email.indexOf("@")>0&&email.indexOf(".")>0){
+				flag = true;
+			}
 		}
 		return flag;
 	}

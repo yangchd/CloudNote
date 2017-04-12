@@ -23,20 +23,12 @@
 					<h3 class="panel-title login_title">云笔记账号注册</h3>
 				</li>
 				<li role="presentation" style="float:right">
-					<p class="panel-title login_title">已有账号去<a href="javascript:;" id="tologinbtn">登陆</a></p>
+					<p class="panel-title login_title"><a href="javascript:;" id="tologinbtn">已有账号去登陆</a></p>
 				</li>
 			</ul>
 		</div>
 		
-      <form class="form-signin" role="form" style="text-align: center;">
-					<!-- 
-							<div class="layui-form-mid layui-word-aux" style="font-size: 18px;color: green;">
-								<span class='glyphicon glyphicon-ok'></span>
-							</div>
-							<div class="layui-form-mid layui-word-aux" style="font-size: 18px;color: red;">
-								<span class='glyphicon glyphicon-remove'>已被注册</span>
-							</div>
-					 -->
+      <form class="form-signin" role="form">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<label class="layui-form-label">昵称</label>

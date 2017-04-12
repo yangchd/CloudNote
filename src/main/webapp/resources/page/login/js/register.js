@@ -228,7 +228,8 @@ window.onload = function(){
 			repeatData.passwordone=passwordone;
 		}else{
 			addRepeat($('#passwordtwo'),"password");
-			repeatData.passwordone="";
+			repeatData.passwordone=passwordone;
+			repeatData.passwordtwo="";
 		}
 	})
 	$('#passwordtwo').change(function(){
