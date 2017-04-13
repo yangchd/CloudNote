@@ -17,6 +17,7 @@
     <context:component-scan base-package="com.bjtu.ycd.logger" />  
     <context:component-scan base-package="com.bjtu.ycd.util" />  
     
+   
     <!-- 开启注解 -->
     <mvc:annotation-driven />
     

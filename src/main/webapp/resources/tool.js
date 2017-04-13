@@ -3,6 +3,7 @@
  */
 
 var url = "http://localhost:8080/cloudnote";
+//var url = "http://192.168.1.110:8080/cloudnote";
 
 var getUrl = function(){
 	return url;

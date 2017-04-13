@@ -10,6 +10,7 @@
 			<result column="mobile" property="mobile"/>
 		</resultMap>
 	
+	
 	 	<select id="getUserByName" parameterType="com.bjtu.ycd.vo.User" resultMap="UserResultMap">
 	 		select * from cn_user 
 	 		where 1=1

@@ -199,7 +199,9 @@
 				<div class="panel-heading">
 					<p>我的小组
 					<a  id="addbtn" style="padding-left: 50px;"><span>创建小组</span><span class="glyphicon glyphicon-plus"></span></a>
-					<a><span class="glyphicon glyphicon-cog" style="padding-left: 20px;"></span></a>
+					<!-- 
+						<a><span class="glyphicon glyphicon-cog" style="padding-left: 20px;"></span></a>
+					 -->
 					</p>
 				</div>
 				<div class="panel-body">
