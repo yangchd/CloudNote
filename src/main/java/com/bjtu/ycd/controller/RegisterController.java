@@ -1,7 +1,6 @@
 package com.bjtu.ycd.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjtu.ycd.logger.LoggerUtil;
-import com.bjtu.ycd.service.ILoginService;
+import com.bjtu.ycd.service.UserService;
 import com.bjtu.ycd.vo.User;
 
 @Controller
@@ -31,7 +30,7 @@ public class RegisterController {
 	private LoggerUtil logger;
 	
 	@Resource
-	private ILoginService loginService;
+	private UserService userService;
     
 	
 	/**
@@ -45,6 +44,21 @@ public class RegisterController {
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	List<User>  reuser = new ArrayList<User>();
     	user = loginuser;
+    	
+    	//密码判断
+    	if(loginuser.getId()!=null&&loginuser.getPassword()!=null){
+    		reuser = userService.getUserByName(user);
+    		if(reuser!=null&&reuser.size()>0){
+    			rMap.put("retflag", "0");
+    			rMap.put("msg", "通过验证！");
+    			return rMap;
+    		}else{
+    			rMap.put("retflag", "1");
+    			rMap.put("msg", "oldpassword");
+    			return rMap;
+    		}
+    	}
+    	
     	try {
     		if(loginuser.getUsername()!=null&&!"".equals(loginuser.getUsername())){
     			String username = new String(loginuser.getUsername().getBytes("iso-8859-1"),"utf-8");
@@ -54,10 +68,10 @@ public class RegisterController {
 			logger.info(e.getMessage());
 		}
     	//先校验正确性
-    	String check = loginService.isEmailOrMobile(user);
+    	String check = userService.isEmailOrMobile(user);
     	//没有格式问题，则进行重复校验
     	if(check==null||"".equals(check)){
-    		reuser = loginService.getUserByName(user);
+    		reuser = userService.getUserByName(user);
     		if(reuser==null||"".equals(reuser)||reuser.size()==0){
     			rMap.put("retflag", "0");
     			rMap.put("msg", "通过验证！");
@@ -99,7 +113,7 @@ public class RegisterController {
 		} catch (UnsupportedEncodingException e) {
 			logger.info(e.getMessage());
 		}
-    	int i = loginService.insertByUser(user);
+    	int i = userService.insertByUser(user);
     	
     	if(i>0){
     		rMap.put("retflag", "0");

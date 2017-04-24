@@ -26,13 +26,13 @@
 					</li>
 				</ul>
 			</div>
-			<form class="form-signin" role="form" style="text-align: center;">
+			<form class="form-signin" role="form" style="width: 650px;padding-left: 150px;">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<label class="layui-form-label">旧密码</label>
 							<div class="layui-input-inline" >
 								<div>
-									<input type="text" class="form-control" placeholder="Password"  autofocus>
+									<input type="password" class="form-control" placeholder="Password" id="password"  autofocus>
 								</div>
 							</div>
 							<div class="layui-form-mid layui-word-aux" id="addrepeat" style="font-size: 18px;color: green;">
@@ -68,12 +68,12 @@
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<div class="layui-input-inline">
-								<input class="btn btn-default" type="button" value="确认修改">
+								<input class="btn btn-default" type="button" id="passwordbtn" value="确认修改">
 							</div>
 						</div>
 						<div class="layui-inline">
 							<div class="layui-input-inline">
-								<input class="btn btn-default" type="button" value="取消修改">
+								<input class="btn btn-default" type="button" id="gotobtn" value="取消修改">
 							</div>
 						</div>
 					</div>

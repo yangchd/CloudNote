@@ -3,40 +3,6 @@
  * 注册js文件
  */
 
-/**
- * 为判断框添加正确或者错误的提示，传入输入框节点
- */
-function addRepeat($this,flag){
-	var node = $this.parent().parent().parent().find('#addrepeat');
-	node.empty();
-	if(flag=="true"){
-		node.append("<span class='glyphicon glyphicon-ok'></span>");
-		node.css("color","green");
-		//成功后去掉有可能的错误提示样式
-		$this.parent().removeClass("form-group has-error");  
-	}
-	if(flag=="false"){
-		node.append("<span class='glyphicon glyphicon-remove'>已被注册</span>");
-		node.css("color","red");
-	}
-	if(flag=="empty"){
-		node.append("<span class='glyphicon glyphicon-remove'>值不能为空</span>");
-		node.css("color","red");
-	}
-	if(flag=="password"){
-		node.append("<span class='glyphicon glyphicon-remove'>密码不同</span>");
-		node.css("color","red");
-	}
-	if(flag=="email"){
-		node.append("<span class='glyphicon glyphicon-remove'>邮箱错误</span>");
-		node.css("color","red");
-	}
-	if(flag=="mobile"){
-		node.append("<span class='glyphicon glyphicon-remove'>手机错误</span>");
-		node.css("color","red");
-	}
-}
-
 //用来存放注册界面数据。当所有数据都满足的时候才可以注册
 var repeatData = {
 		username:"",

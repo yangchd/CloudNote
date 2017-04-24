@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>笔记本</title>
-
 <mx:commonlink/>
 <link href="../../resources/page/homepage/css/notebookPage.css" rel="stylesheet">
 <script type="text/javascript" src="../../resources/page/homepage/js/noteboosPage.js"></script>

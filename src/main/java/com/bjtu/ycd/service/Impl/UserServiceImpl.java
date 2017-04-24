@@ -7,13 +7,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.bjtu.ycd.dao.IUserDao;
-import com.bjtu.ycd.service.ILoginService;
+import com.bjtu.ycd.service.UserService;
 import com.bjtu.ycd.util.Tool;
 import com.bjtu.ycd.vo.User;
 
 
-@Service("loginService")
-public class LoginServiceImpl implements ILoginService {
+@Service("userService")
+public class UserServiceImpl implements UserService {
 
 	@Resource  
     private IUserDao userDao;  
@@ -30,7 +30,12 @@ public class LoginServiceImpl implements ILoginService {
 	public int insertByUser(User user) {
 		return this.userDao.insertByUser(user);
 	}
-
+	
+	@Override
+	public int updateById(User user) {
+		return this.userDao.updateById(user);
+	}
+	
 	@Override
 	public String isEmailOrMobile(User user) {
 		//如果格式错误，返回这个格式的错误名字
@@ -47,6 +52,5 @@ public class LoginServiceImpl implements ILoginService {
     	}
 		return "";
 	}
-
 
 }

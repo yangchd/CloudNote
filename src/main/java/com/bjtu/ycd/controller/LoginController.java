@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjtu.ycd.logger.LoggerUtil;
-import com.bjtu.ycd.service.ILoginService;
+import com.bjtu.ycd.service.UserService;
 import com.bjtu.ycd.util.Tool;
 import com.bjtu.ycd.vo.User;
 
@@ -33,13 +33,15 @@ public class LoginController {
 	private Tool tool;
 	
 	@Resource
-	private ILoginService loginService;
+	private UserService userService;
     
     @RequestMapping(value="/getLogin",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getLogin(User loginuser,HttpSession httpSession){
     	Map<String, Object> rMap = new HashMap<String, Object>();
-    	logger.info("用户["+loginuser.getUsername()+"]发起登陆请求 密码["+loginuser.getPassword()+"]\r\n");
+    	logger.info("用户["+loginuser.getUsername()+"]发起登陆请求\r\n");
+    	
+    	//先进行非空判断
     	if(loginuser.getUsername()==null||"".equals(loginuser.getUsername())){
     		rMap.put("retflag", "1");
     		rMap.put("msg", "请输入用户名");
@@ -52,6 +54,7 @@ public class LoginController {
     	}
     	user.setPassword(loginuser.getPassword());
     	
+    	//进行格式判断
     	int loginflag = 0;
     	if (tool.isEmail(loginuser.getUsername())) {
 			user.setEmail(loginuser.getUsername());
@@ -67,10 +70,11 @@ public class LoginController {
     	}
     	
     	
-    	List<User> reuser = loginService.getUserByName(user);
+    	List<User> reuser = userService.getUserByName(user);
     	if(reuser==null||reuser.size()==0){
+    		//未注册
     		rMap.put("retflag", "1");
-    		rMap.put("msg", "输入的用户不存在，请确认！");
+    		rMap.put("msg", "用户名或密码错误！");
     		return rMap;
     	}else{
     		//进行密码判断
@@ -83,7 +87,7 @@ public class LoginController {
         		return rMap;
     		}else{
         		rMap.put("retflag", "1");
-        		rMap.put("msg", "密码错误，请重新输入！");
+        		rMap.put("msg", "用户名或密码错误！");
         		return rMap;
     		}
     	}

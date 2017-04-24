@@ -9,4 +9,5 @@ import com.bjtu.ycd.vo.User;
 public interface IUserDao {
 	public List<User> getUserByName(User user);
 	public int insertByUser(User user);
+	public int updateById(User user);
 }
