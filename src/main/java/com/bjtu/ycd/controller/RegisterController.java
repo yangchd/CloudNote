@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjtu.ycd.logger.LoggerUtil;
+import com.bjtu.ycd.service.SpaceService;
 import com.bjtu.ycd.service.UserService;
+import com.bjtu.ycd.vo.Space;
 import com.bjtu.ycd.vo.User;
 
 @Controller
@@ -31,6 +33,9 @@ public class RegisterController {
 	
 	@Resource
 	private UserService userService;
+	
+	@Resource
+	private SpaceService spaceService;
     
 	
 	/**
@@ -105,25 +110,35 @@ public class RegisterController {
     public Map<String, Object> insertRegister(User loginuser){
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	
-    	user = loginuser;
-    	user.setId(UUID.randomUUID().toString());
-    	try {
-    		String username = new String(loginuser.getUsername().getBytes("iso-8859-1"),"utf-8");
-    		user.setUsername(username);
-		} catch (UnsupportedEncodingException e) {
-			logger.info(e.getMessage());
-		}
-    	int i = userService.insertByUser(user);
-    	
-    	if(i>0){
-    		rMap.put("retflag", "0");
-    		rMap.put("msg", "注册成功！");
-    		return rMap;
+    	String spaceid = UUID.randomUUID().toString();
+		Space space = new Space();
+		space.setSpaceid(spaceid);
+		space.setSpacename("默认空间");
+    	int result = spaceService.createSpace(space);
+    	if(result>0){
+    		user = loginuser;
+        	user.setId(UUID.randomUUID().toString());
+        	user.setSpaceid(spaceid);
+        	try {
+        		String username = new String(loginuser.getUsername().getBytes("iso-8859-1"),"utf-8");
+        		user.setUsername(username);
+    		} catch (UnsupportedEncodingException e) {
+    			logger.info(e.getMessage());
+    		}
+        	int i = userService.insertByUser(user);
+        	if(i>0){
+        		rMap.put("retflag", "0");
+        		rMap.put("msg", "注册成功！");
+        		return rMap;
+        	}else{
+           		rMap.put("retflag", "1");
+        		rMap.put("msg", "注册失败！");
+        		return rMap;
+        	}
     	}else{
        		rMap.put("retflag", "1");
-    		rMap.put("msg", "注册失败！");
+    		rMap.put("msg", "空间建立失败！");
     		return rMap;
     	}
     }
-    
 }

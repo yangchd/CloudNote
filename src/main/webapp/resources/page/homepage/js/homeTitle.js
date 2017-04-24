@@ -13,7 +13,6 @@ function getSession(){
 				$('#username').text(result.username);
 			}
 			if(result.retflag==1){
-//				layer.msg("登陆超时");
 				window.location.href=getUrl()+"/page/login/login.jsp";
 			}
 		},

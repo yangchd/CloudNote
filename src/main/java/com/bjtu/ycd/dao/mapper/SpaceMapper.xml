@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.bjtu.ycd.dao.ISpaceDao">
+		<resultMap type="com.bjtu.ycd.vo.Space" id="SpaceResultMap">
+			<id column="spaceid" property="spaceid" />
+			<result column="spacename" property="spacename"/>
+			<result column="createtime" property="createtime"/>
+			<result column="edittime" property="edittime"/>
+			<result column="parentid" property="parentid"/>
+		</resultMap>
+	
+	
+	 	<select id="getSpaceByVo" parameterType="com.bjtu.ycd.vo.Space" resultMap="SpaceResultMap">
+	 		select * from cn_space 
+	 		where 1=1
+	 		<if test="spaceid!=null">
+	 			and spaceid = #{spaceid}
+	 		</if>
+	 		<if test="spacename!=null">
+	 			and spacename = #{spacename}
+	 		</if>
+	 		<if test="createtime!=null">
+	 			and createtime = #{createtime}
+	 		</if>
+	 		<if test="edittime!=null">
+	 			and edittime = #{edittime}
+	 		</if>
+	 		<if test="parentid!=null">
+	 			and parentid = #{parentid}
+	 		</if>
+	 	</select>
+	 	
+	 	<insert id="insertBuVo" parameterType="com.bjtu.ycd.vo.Space" >
+	 		insert into cn_space(spaceid,spacename,createtime,edittime,parentid) 
+	 		values(#{spaceid},#{spacename},#{createtime},#{edittime},#{parentid})
+	 	</insert>
+	 	
+	 	<update id="updateById" parameterType="com.bjtu.ycd.vo.Space">
+	 		update cn_space
+	 		<set>
+	 			<if test="spacename!=null">
+	 				spacename=#{spacename},
+	 			</if>
+	 			<if test="createtime!=null">
+	 				createtime=#{createtime},
+	 			</if>
+	 			<if test="edittime!=null">
+	 				edittime=#{edittime}
+	 			</if>
+	 			<if test="parentid!=null">
+	 				parentid=#{parentid}
+	 			</if>
+	 		</set>
+	 		where spaceid = #{spaceid}
+	 	</update>
+	 	
+	</mapper>
+	

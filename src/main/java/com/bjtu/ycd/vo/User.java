@@ -10,6 +10,7 @@ public class User {
 	private String password;
 	private String email;
 	private String mobile;
+	private String spaceid;
 	
 	
 	public String getId() {
@@ -42,10 +43,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", email=" + email + ", mobile=" + mobile
-				+ "]";
+	public String getSpaceid() {
+		return spaceid;
+	}
+	public void setSpaceid(String spaceid) {
+		this.spaceid = spaceid;
 	}
 	
 }

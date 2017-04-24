@@ -57,7 +57,7 @@
 						<div class="layui-form-item">
 							<div class="layui-inline">
 								<div class="layui-input-inline">
-									<input class="btn btn-default" type="button" value="确认新增">
+									<input class="btn btn-default" type="button" id="paneladdbtn" value="确认新增">
 								</div>
 							</div>
 							<div class="layui-inline">

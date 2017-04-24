@@ -8,6 +8,7 @@
 			<result column="password" property="password"/>
 			<result column="email" property="email"/>
 			<result column="mobile" property="mobile"/>
+			<result column="spaceid" property="spaceid"/>
 		</resultMap>
 	
 	
@@ -32,8 +33,8 @@
 	 	</select>
 	 	
 	 	<insert id="insertByUser" parameterType="com.bjtu.ycd.vo.User" >
-	 		insert into cn_user(id,username,password,mobile,email) 
-	 		values(#{id},#{username},#{password},#{mobile},#{email})
+	 		insert into cn_user(id,username,password,mobile,email,spaceid) 
+	 		values(#{id},#{username},#{password},#{mobile},#{email},#{spaceid})
 	 	</insert>
 	 	
 	 	<update id="updateById" parameterType="com.bjtu.ycd.vo.User">
