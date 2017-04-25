@@ -31,4 +31,9 @@ public class NoteBookServiceImpl implements NoteBookService {
 		return this.notebookdao.updateById(book);
 	}
 
+	@Override
+	public int deleteById(NoteBook book) {
+		return this.notebookdao.deleteById(book);
+	}
+
 }

@@ -105,4 +105,20 @@ public class NoteBookController {
     	}
     	return rMap;
     }
+    
+    @RequestMapping(value="/delete",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> deleteBook(NoteBook book){
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	
+    	int result = bookService.deleteById(book);
+    	if(result>0){
+    		rMap.put("retflag", "0");
+    		rMap.put("msg", "删除成功");
+    	}else{
+    		rMap.put("retflag", "1");
+    		rMap.put("msg", "删除失败");
+    	}
+    	return rMap;
+    }
 }

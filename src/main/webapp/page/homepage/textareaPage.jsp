@@ -20,7 +20,7 @@
 							<!-- 
 								<input class="btn btn-default" type="button" value="编辑">
 							 -->
-							<input class="btn btn-default" type="button" value="删除">
+							<input class="btn btn-default" id="delete" type="button" value="删除">
 						</div>
 					</div>
 					<div id="textareaparent">

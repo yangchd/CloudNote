@@ -11,4 +11,5 @@ public interface NoteBookService {
 	int createBook(NoteBook book);
 	List<NoteBook> getBookByVo(NoteBook book);
 	int updateById(NoteBook book);
+	int deleteById(NoteBook book);
 }

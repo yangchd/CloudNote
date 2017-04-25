@@ -57,6 +57,7 @@ function createtext(){
 					timeout:2000,
 					success:function(result){
 						if(result.retflag==0){
+							alert("保存成功！")
 						}
 						if(result.retflag==1){
 						}
@@ -65,6 +66,30 @@ function createtext(){
 						alert(JSON.stringify(msg));
 					}
 				});
+		  })
+		  $('#delete').unbind();
+		  $('#delete').on('click',function(){
+			  var bookid = $('#bookid').text();
+			  var data={
+					  notebookid:bookid,
+			  }
+			  $.ajax({
+				  type:"GET",
+				  url:getUrl()+"/notebook/update",
+				  data:data,
+				  dataType:"json",
+				  timeout:2000,
+				  success:function(result){
+					  if(result.retflag==0){
+						  alert("删除成功！")
+					  }
+					  if(result.retflag==1){
+					  }
+				  },
+				  error:function(msg){
+					  alert(JSON.stringify(msg));
+				  }
+			  });
 		  })
 	});
 }
