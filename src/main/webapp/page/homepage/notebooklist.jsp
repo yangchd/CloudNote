@@ -8,16 +8,11 @@
 
 <body>
 	<div class="panel panel-default">
-		<div class="list-group">
+		<div class="list-group" id="booklist">
 			<a href="javascript:;" class="list-group-item">
-				<h1 class="list-group-item-heading">某某某笔记本</h1>
-				<p class="list-group-item-text">创建时间等信息</p>
-			</a> <a href="javascript:;" class="list-group-item">
-				<h1 class="list-group-item-heading">某某某笔记本</h1>
-				<p class="list-group-item-text">创建时间等信息</p>
-			</a> <a href="javascript:;" class="list-group-item">
-				<h1 class="list-group-item-heading">某某某笔记本</h1>
-				<p class="list-group-item-text">创建时间等信息</p>
+				<h1 class="list-group-item-heading" style="height: 200px;text-align: center;padding-top: 90px;">
+				这个目录没有内容
+				</h1>
 			</a>
 		</div>
 	</div>

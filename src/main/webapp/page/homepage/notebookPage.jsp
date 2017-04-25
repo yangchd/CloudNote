@@ -29,7 +29,7 @@
 			<div class="panel-body">
 			<div class="col-md-3">
 					<h2>请选择新增文件路径</h2>
-					<div style="display: inline-block; width: 200px; padding: 10px; overflow: auto;">
+					<div class="treecss">
 					  <ul class="addtree"></ul>
 					</div>
 			</div>
@@ -39,10 +39,19 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">类别</label>
 								<div class="layui-input-inline">
-									<select class="form-control" style="width: inherit;" name="addtype">
-									  <option>笔记本</option>
-									  <option>目录</option>
+									<select class="form-control" style="width: inherit;" id="addtype">
+									  <option value="1">笔记本</option>
+									  <option value="2">目录</option>
 									</select>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">路径</label>
+								<div class="layui-input-inline">
+									<input type="text" id="addtreeid" class="form-control" readonly="readonly" style="display: none;">
+									<input type="text" id="addtreename" class="form-control" readonly="readonly">
 								</div>
 							</div>
 						</div>
@@ -50,7 +59,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">名称</label>
 								<div class="layui-input-inline">
-									<input type="text" name="addname"  class="form-control">
+									<input type="text" id="addname"  class="form-control">
 								</div>
 							</div>
 						</div>
@@ -78,25 +87,31 @@
 			<div class="panel-body">
 			<div class="col-md-3">
 					<h2>选择要移动的笔记本</h2>
-					<div style="display: inline-block; width: 200px; padding: 10px; overflow: auto;">
+					<div class="treecss">
 					  <ul class="movetreeone"></ul>
 					</div>
 			</div>
 			<div class="col-md-3">
-					<div class="notebooklist">
+					<div class="notebooklist" id="movetreeonelist">
 						<!-- 这里加载笔记本列表 -->
 					</div>
 			</div>
 			<div class="col-md-3">
 					<h2>选择要移动到的位置</h2>
-					<div style="display: inline-block; width: 200px; padding: 10px; overflow: auto;">
+					<div class="treecss">
 					  <ul class="movetreetwo"></ul>
 					</div>
 			</div>
 			<div class="col-md-3">
-					<div class="notebooklist">
+					<div class="notebooklist" id="movetreetwolist">
 						<!-- 这里加载笔记本列表 -->
 					</div>
+			</div>
+			<div class="col-md-12 movepanel" style="display: block;">
+				<span id="movefrom"></span>
+				<span id="movename" style="padding-left: 15px;"></span>
+				<span class="glyphicon glyphicon-arrow-right" id="jiantou"></span>
+				<span id="moveto"></span>
 			</div>
 			
 			<form class="form-inline">
@@ -121,12 +136,12 @@
 			<div class="panel-body">
 				<div class="col-md-3">
 						<h2>选择删除文件的路径</h2>
-						<div style="display: inline-block; width: 200px; padding: 10px; overflow: auto;">
+						<div class="treecss">
 						  <ul class="deletetree"></ul>
 						</div>
 				</div>
 				<div class="col-md-9">
-					<div class="notebooklist">
+					<div class="notebooklist" id="deletetreelist">
 						<!-- 这里加载笔记本列表 -->
 					</div>
 				</div>
@@ -164,20 +179,19 @@
 							<input class="btn btn-default" id="editbtn" type="button" value="移动">
 							<input class="btn btn-default" id="deletebtn" type="button" value="删除">
 						</div>
-						<input class="btn btn-default" id="gotohomepagebtn" style="float:right;display:none;" type="button" value="去主页">
 					</div>
 				</div>
 			</div>
 				<!-- 左侧下拉菜单 -->
 				<div class="col-md-4">
-					<div style="display: inline-block; width: 200px; padding: 10px; overflow: auto;">
+					<div class="treecss">
 					  <ul class="pwdtree"></ul>
 					</div>
 				</div>
 				
 				<!-- 中部笔记本显示  -->
 				<div class="col-md-8">
-					<div class="notebooklist">
+					<div class="notebooklist" id="pwdlist">
 						<!-- 这里加载笔记本列表 -->
 					</div>
 				</div>

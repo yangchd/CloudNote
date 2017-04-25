@@ -1,5 +1,7 @@
 package com.bjtu.ycd.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +45,15 @@ public class SpaceController {
     	
     	String spaceid = UUID.randomUUID().toString();
     	createspace.setSpaceid(spaceid);
+    	
+    	try {
+			String spacename = new String(createspace.getSpacename().getBytes("iso-8859-1"),"utf-8");
+			createspace.setSpacename(spacename);
+		} catch (Exception e) {
+			logger.info(e.getMessage()+"\r\n");
+		}
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	createspace.setCreatetime(sdf.format(new Date()));
     	
     	int result = spaceService.createSpace(createspace);
     	if(result>0){
