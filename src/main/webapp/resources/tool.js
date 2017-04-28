@@ -2,12 +2,27 @@
  * 工具类
  */
 
+//访问地址获取
 var url = "http://localhost:8080/cloudnote";
-//var url = "http://192.168.1.110:8080/cloudnote";
-
 var getUrl = function(){
 	return url;
 }
+
+/**
+ * 提示函数
+ * @param message
+ */
+function alertmsg(message){
+	layui.use('layer', function(){
+		var layer = layui.layer;
+		if(message=="error"){
+			layer.msg('发生了点小问题，请重新登录后再试~');
+		}else{
+			layer.msg(message);
+		}
+	}); 
+}
+
 
 /**
  * 为判断框添加正确或者错误的提示，传入输入框节点
@@ -47,7 +62,10 @@ function addRepeat($this,flag){
 	}
 }
 
-
+/**
+ * 获取当前登录用户id用
+ * @returns {String}
+ */
 function getUserID(){
 	var userid="";
 	$.ajax({
@@ -70,11 +88,6 @@ function getUserID(){
 	});
 	return userid;
 }
-
-window.onload = function(){
-}
-
-
 
 
 

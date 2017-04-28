@@ -1,5 +1,6 @@
 package com.bjtu.ycd.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -51,6 +52,11 @@ public class UserServiceImpl implements UserService {
     		if(!flag)return "mobile";
     	}
 		return "";
+	}
+
+	@Override
+	public List<User> getSearchList(String search) {
+		return this.userDao.getSearchList(search);
 	}
 
 }

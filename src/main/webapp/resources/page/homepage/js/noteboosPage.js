@@ -18,7 +18,7 @@ function getTreeById(){
 			}
 		},
 		error:function(msg){
-			alert(JSON.stringify(msg));
+			alertmsg("error");
 		}
 	});
 	return tree;
@@ -28,13 +28,15 @@ function getTreeById(){
 /**
  * 生成树函数 
  *  target为生成树位置 
- *  this为指定地点 
+ *  func为点击回调函数 
  *  str为树结构
- *  listtarget为对应列表位置
+ *  listtarget为当前树控制列表的位置
  */
 function createtree(target,func,str,listtarget){
 	var listtar = listtarget;
 	var tar = target;
+	//生成之前先清空
+	$(tar).empty();
 	  layui.tree({
 		    elem: tar //指定元素
 		    ,click: function(item){
@@ -44,31 +46,31 @@ function createtree(target,func,str,listtarget){
 	  });
 }
 
-
+/**
+ * 生成树函数
+ */
 function loadtree(){
-	//生成树
 	layui.use(['tree', 'layer'], function(){
 	  var layer = layui.layer
 	  ,$ = layui.jquery; 
 	  //获取树结构
 	  var str = eval('(' + getTreeById() + ')'); ;
 	  //生成树
-	  $('.pwdtree').empty();
-	  $('.addtree').empty();
-	  $('.movetreeone').empty();
-	  $('.movetreetwo').empty();
-	  $('.deletetree').empty();
 	  createtree(".pwdtree",pwdtree,str,"#pwdlist");
 	  createtree(".addtree",addtree,str);
-	  createtree(".movetreeone",booklisttree,str,"#movetreeonelist");
-	  createtree(".movetreetwo",booklisttree,str,"#movetreetwolist");
-	  createtree(".deletetree",booklisttree,str,"#deletetreelist");
+	  createtree(".movetreeone",movefromtree,str,"#movetreeonelist");
+	  createtree(".movetreetwo",movetotree,str,"#movetreetwolist");
+	  createtree(".deletetree",deletetree,str,"#deletetreelist");
 	  
 	});
 }
 
 
-//主面板函数
+/**
+ * 主面板生成树回调函数
+ * item 为传入当前点击节点信息
+ * target为生成列表位置
+ */
 function pwdtree(item,target){
 	var tar = target;
 	var spaceid = item.id;
@@ -83,40 +85,45 @@ function pwdtree(item,target){
 		timeout:2000,
 		success:function(result){
 			if(result.retflag==0){
-				loadbooklist(result.booklist,$(tar));
-				$('.list-group-item').on('click',function(){
-					var booklistid = $(this).find('#booklistid').text();
-					//将信息加载到编辑区
-					for(var i=0;i<result.booklist.length;i++){
-						if(result.booklist[i].notebookid==booklistid){
-							loadtextarea(result.booklist[i],$(tar));
-						}
-					}
-				})
+				//根据查询到的结果生成显示列表
+				loadbooklist(result.booklist,$(tar),spaceid,loadtextarea);
 			}
 			if(result.retflag==1){
-				loadbooklist(result.booklist,$(tar));
+				loadbooklist(result.booklist,$(tar),spaceid,loadtextarea);
 			}
 		},
 		error:function(msg){
-			alert(JSON.stringify(msg));
+			alertmsg("error");
 		}
 	});
 }
 
-//新增面板树函数
+/**
+ * 新增面板树函数
+ * @param item
+ */
 function addtree(item){
 	$('#addtreename').val(item.name);
 	$('#addtreeid').val(item.id);
 }
 
-
-function addmovename(){
-	var name = $(this).find("#title").val();
-	alert(name);
+function addmovename(bookid,bookname){
+	$('#movebookid').empty();
+	$('#movebookid').append(bookid);
+	$('#movebookname').empty();
+	$('#movebookname').append(bookname);
+}
+function deletename(bookid,bookname){
+	$('#deletebookid').empty();
+	$('#deletebookid').append(bookid);
+	$('#deletebookname').empty();
+	$('#deletebookname').append(bookname);
 }
 
-function booklisttree(item,target){
+/**
+ * 移动树点击回调函数
+ */
+function movefromtree(item,target){
 	var tar = target;
 	var spaceid = item.id;
 	var data={
@@ -130,16 +137,78 @@ function booklisttree(item,target){
 		timeout:2000,
 		success:function(result){
 			if(result.retflag==0){
-				loadbooklist(result.booklist,$(tar));
-				$('#movefrom').empty();
-				$('#movefrom').append("目录："+item.name+"下  ");
+				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
+				$('#movespaceid').empty();
+				$('#movespaceid').append(item.id);
+				$('#movespacename').empty();
+				$('#movespacename').append("目录："+item.name+"下  ");
 			}
 			if(result.retflag==1){
-				loadbooklist(result.booklist,$(tar));
+				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
 			}
 		},
 		error:function(msg){
-			alert(JSON.stringify(msg));
+			alertmsg("error");
+		}
+	});
+}
+function movetotree(item,target){
+	var tar = target;
+	var spaceid = item.id;
+	var data={
+			spaceid:spaceid
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/notebook/getbooklist",
+		data:data,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
+				$('#movetoid').empty();
+				$('#movetoid').append(item.id);
+				$('#movetoname').empty();
+				$('#movetoname').append("目录："+item.name+"下  ");
+			}
+			if(result.retflag==1){
+				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
+			}
+		},
+		error:function(msg){
+			alertmsg("error");
+		}
+	});
+}
+
+/**
+ * 删除回调函数
+ * @param item
+ * @param target
+ */
+function deletetree(item,target){
+	var tar = target;
+	var spaceid = item.id;
+	var data={
+			spaceid:spaceid
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/notebook/getbooklist",
+		data:data,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+				loadbooklist(result.booklist,$(tar),spaceid,deletename);
+			}
+			if(result.retflag==1){
+				loadbooklist(result.booklist,$(tar),spaceid,deletename);
+			}
+		},
+		error:function(msg){
+			alertmsg("error");
 		}
 	});
 }
@@ -169,14 +238,13 @@ window.onload = function(){
 		var spaceid=$('#addtreeid').val();
 		var spacename=$('#addname').val();
 		if(spaceid==null||spaceid==""){
-			alert("请先选择路径");
+			alertmsg("请先选择路径");
 			return;
 		}
 		if(spacename==null||spacename==""){
-			alert("名称不能为空");
+			alertmsg("名称不能为空");
 			return;
 		}
-		
 		var type = $('#addtype').val();
 		var data={};
 		var url="";
@@ -206,13 +274,13 @@ window.onload = function(){
 						loadtree();
 					}
 					$('#addbtn_panel').css("display","none");
-					alert("新增成功");
+					alertmsg("新增成功");
 				}
 				if(result.retflag==1){
 				}
 			},
 			error:function(msg){
-				alert(JSON.stringify(msg));
+				alertmsg("error");
 			}
 		});
 	})
@@ -223,16 +291,69 @@ window.onload = function(){
 		$('#editbtn_panel').css("display","block");
 	})
 	$('#canceleditbtn').on('click',function(){
-		//在关闭这个页面之前，最好做重置，等待重置按钮在后续优化
 		$('#editbtn_panel').css("display","none");
 	})
+	$('#movebtn').on('click',function(){
+		var spaceid = $('#movetoid').text();
+		var bookid = $('#movebookid').text();
+		var data={
+				notebookid:bookid,
+				spaceid:spaceid
+		}
+		$.ajax({
+			type:"GET",
+			url:getUrl()+"/notebook/update",
+			data:data,
+			dataType:"json",
+			timeout:2000,
+			success:function(result){
+				if(result.retflag==0){
+					alertmsg("移动成功");
+					$('#editbtn_panel').css("display","none");
+				}
+				if(result.retflag==1){
+				}
+			},
+			error:function(msg){
+				alertmsg("error");
+			}
+		});
+	})
+	
+	
+	
 	$('#deletebtn').on('click',function(){
 		$('#deletebtn_panel').css("display","block");
 	})
 	$('#canceldeletebtn').on('click',function(){
-		//在关闭这个页面之前，最好做重置，等待重置按钮在后续优化
 		$('#deletebtn_panel').css("display","none");
 	})
+	$('#deletebookbtn').on('click',function(){
+		var bookid = $('#deletebookid').text();
+		var data={
+				notebookid:bookid,
+		}
+		$.ajax({
+			type:"GET",
+			url:getUrl()+"/notebook/delete",
+			data:data,
+			dataType:"json",
+			timeout:2000,
+			success:function(result){
+				if(result.retflag==0){
+					alertmsg("删除成功");
+					$('#deletebtn_panel').css("display","none");
+				}
+				if(result.retflag==1){
+				}
+			},
+			error:function(msg){
+				alertmsg("error");
+			}
+		});
+	})
+	
+	
 	
 	
 }

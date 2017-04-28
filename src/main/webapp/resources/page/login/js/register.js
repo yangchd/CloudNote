@@ -76,15 +76,15 @@ window.onload = function(){
 				timeout:2000,
 				success:function(result){
 					if(result.retflag==0){
-						alert(result.msg);
+						alertmsg(result.msg);
 						window.location.href=getUrl()+"/page/login/login.jsp";
 					}
 					if(result.retflag==1){
-						alert(result.msg);
+						alertmsg(result.msg);
 					}
 				},
 				error:function(msg){
-					alert(JSON.stringify(msg));
+					alertmsg('error');
 				}
 			});
 		}else{
@@ -114,7 +114,7 @@ window.onload = function(){
 				}
 			},
 			error:function(msg){
-				alert(JSON.stringify(msg));
+				alertmsg('error');
 			}
 		});
 	})
@@ -145,7 +145,7 @@ window.onload = function(){
 				}
 			},
 			error:function(msg){
-				alert(JSON.stringify(msg));
+				alertmsg('error');
 			}
 		});
 	})
@@ -176,7 +176,7 @@ window.onload = function(){
 				}
 			},
 			error:function(msg){
-				alert(JSON.stringify(msg));
+				alertmsg('error');
 			}
 		});
 	})

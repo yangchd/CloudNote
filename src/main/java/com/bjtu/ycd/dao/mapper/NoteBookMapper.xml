@@ -43,9 +43,12 @@
 	 		values(#{notebookid},#{notebookname},#{msg},#{createtime},#{edittime},#{spaceid},#{flag})
 	 	</insert>
 	 	
+	 	<delete id="deleteById" parameterType="com.bjtu.ycd.vo.NoteBook">
+	 		delete from cn_notebook where notebookid = #{notebookid}
+	 	</delete>
 	 	<update id="updateById" parameterType="com.bjtu.ycd.vo.NoteBook">
 	 		update cn_notebook
-	 		<set>
+	 		<trim prefix="set" suffixOverrides=",">
 	 			<if test="notebookname!=null">
 	 				notebookname=#{notebookname},
 	 			</if>
@@ -53,15 +56,15 @@
 	 				msg=#{msg},
 	 			</if>
 	 			<if test="edittime!=null">
-	 				edittime=#{edittime}
+	 				edittime=#{edittime},
 	 			</if>
 	 			<if test="spaceid!=null">
-	 				spaceid=#{spaceid}
+	 				spaceid=#{spaceid},
 	 			</if>
 	 			<if test="flag!=null">
-	 				flag=#{flag}
+	 				flag=#{flag},
 	 			</if>
-	 		</set>
+	 		</trim>
 	 		where notebookid = #{notebookid}
 	 	</update>
 	 	

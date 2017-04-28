@@ -21,11 +21,11 @@ window.onload = function(){
 					window.location.href=getUrl()+"/page/homepage/homePage.jsp";
 				}
 				if(result.retflag==1){
-					alert(result.msg);
+					alertmsg(result.msg);
 				}
 			},
 			error:function(msg){
-				alert(JSON.stringify(msg));
+				alertmsg('error');
 			}
 		});
 	})

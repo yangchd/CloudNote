@@ -38,7 +38,7 @@ window.onload = function(){
 				}
 			},
 			error:function(msg){
-				alert(JSON.stringify(msg));
+				alertmsg('error');
 			}
 		});
 	})
@@ -110,15 +110,15 @@ window.onload = function(){
 				timeout:2000,
 				success:function(result){
 					if(result.retflag==0){
-						alert("修改成功,请重新登录！");
 						window.location.href=getUrl()+"/page/login/login.jsp";
+						alertmsg("修改成功,请重新登录！");
 					}
 					if(result.retflag==1){
 						window.location.href=getUrl()+"/page/login/login.jsp";
 					}
 				},
 				error:function(msg){
-					alert(JSON.stringify(msg));
+					alertmsg('error');
 				}
 			});
 		}

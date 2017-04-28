@@ -10,4 +10,6 @@ public interface IUserDao {
 	public List<User> getUserByName(User user);
 	public int insertByUser(User user);
 	public int updateById(User user);
+	public List<User> getSearchList(String search);
+	public List<User> getNamesByIds(List<String> idlist);
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.bjtu.ycd.dao.ITeamDao">
+		<resultMap type="com.bjtu.ycd.vo.Team" id="teamResultMap">
+			<id column="teamid" property="teamid" />
+			<result column="teamname" property="teamname"/>
+			<result column="leader" property="leader"/>
+			<result column="member" property="member"/>
+			<result column="createtime" property="createtime"/>
+		</resultMap>
+	
+	 	<select id="getTeamByVo" parameterType="com.bjtu.ycd.dao.ITeamDao" resultMap="teamResultMap">
+	 		select * from cn_team 
+	 		where 1=1
+	 		<if test="teamid!=null">
+	 			and teamid = #{teamid}
+	 		</if>
+	 		<if test="teamname!=null">
+	 			and teamname = #{teamname}
+	 		</if>
+	 		<if test="leader!=null">
+	 			and leader = #{leader}
+	 		</if>
+	 		<if test="member!=null">
+	 			and member = #{member}
+	 		</if>
+	 		<if test="createtime!=null">
+	 			and createtime = #{createtime}
+	 		</if>
+	 	</select>
+	 	
+	 	<select id="getTeamByUserId" parameterType="String" resultMap="teamResultMap">
+	 		select * from cn_team 
+	 		where leader = #{userid} or member like "%"#{userid}"%"
+	 	</select>
+	 	
+	 	<insert id="insertByVo" parameterType="com.bjtu.ycd.dao.ITeamDao" >
+	 		insert into cn_team(teamid,teamname,leader,member,createtime) 
+	 		values(#{teamid},#{teamname},#{leader},#{member},#{createtime})
+	 	</insert>
+	 	
+	 	<delete id="deleteById" parameterType="com.bjtu.ycd.dao.ITeamDao">
+	 		delete from cn_team where teamid = #{teamid}
+	 	</delete>
+	 	
+	 	<update id="updateById" parameterType="com.bjtu.ycd.dao.ITeamDao">
+	 		update cn_team
+	 		<trim prefix="set" suffixOverrides=",">
+	 			<if test="teamname!=null">
+		 			teamname = #{teamname},
+		 		</if>
+		 		<if test="leader!=null">
+		 			leader = #{leader},
+		 		</if>
+		 		<if test="member!=null">
+		 			member = #{member},
+		 		</if>
+		 		<if test="createtime!=null">
+		 			createtime = #{createtime},
+		 		</if>
+	 		</trim>
+	 		where teamid = #{teamid}
+	 	</update>
+	 	
+	</mapper>
+	

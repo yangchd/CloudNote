@@ -38,7 +38,7 @@
 	 	
 	 	<update id="updateById" parameterType="com.bjtu.ycd.vo.Space">
 	 		update cn_space
-	 		<set>
+	 		<trim prefix="set" suffixOverrides=",">
 	 			<if test="spacename!=null">
 	 				spacename=#{spacename},
 	 			</if>
@@ -46,12 +46,12 @@
 	 				createtime=#{createtime},
 	 			</if>
 	 			<if test="edittime!=null">
-	 				edittime=#{edittime}
+	 				edittime=#{edittime},
 	 			</if>
 	 			<if test="parentid!=null">
-	 				parentid=#{parentid}
+	 				parentid=#{parentid},
 	 			</if>
-	 		</set>
+	 		</trim>
 	 		where spaceid = #{spaceid}
 	 	</update>
 	 	

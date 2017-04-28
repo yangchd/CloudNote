@@ -85,40 +85,44 @@
 		<!-- 移动面板，界面待优化 -->
 		<div class="panel panel-default" id="editbtn_panel" style="display: none;">
 			<div class="panel-body">
-			<div class="col-md-3">
+			<div class="col-md-4">
 					<h2>选择要移动的笔记本</h2>
 					<div class="treecss">
 					  <ul class="movetreeone"></ul>
 					</div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 					<div class="notebooklist" id="movetreeonelist">
 						<!-- 这里加载笔记本列表 -->
 					</div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 					<h2>选择要移动到的位置</h2>
 					<div class="treecss">
 					  <ul class="movetreetwo"></ul>
 					</div>
 			</div>
-			<div class="col-md-3">
-					<div class="notebooklist" id="movetreetwolist">
-						<!-- 这里加载笔记本列表 -->
-					</div>
-			</div>
+			<!-- 
+				<div class="col-md-3">
+						<div class="notebooklist" id="movetreetwolist">
+						</div>
+				</div>
+			 -->
 			<div class="col-md-12 movepanel" style="display: block;">
-				<span id="movefrom"></span>
-				<span id="movename" style="padding-left: 15px;"></span>
-				<span class="glyphicon glyphicon-arrow-right" id="jiantou"></span>
-				<span id="moveto"></span>
+				<span id="movespaceid" style="display: none;"></span>
+				<span id="movespacename"></span>
+				<span id="movebookid" style="display: none;"></span>
+				<span id="movebookname" style="padding-left: 15px;"></span>
+				<span id="jiantou">移动至<span class="glyphicon glyphicon-arrow-right" ></span></span>
+				<span id="movetoid" style="display: none;"></span>
+				<span id="movetoname"></span>
 			</div>
 			
 			<form class="form-inline">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<div class="layui-input-inline">
-								<input class="btn btn-default" type="button" value="确认移动">
+								<input class="btn btn-default" id="movebtn" type="button" value="确认移动">
 							</div>
 						</div>
 						<div class="layui-inline">
@@ -134,22 +138,26 @@
 		<!-- 删除面板，暂时未设计好 -->
 		<div class="panel panel-default" id="deletebtn_panel" style="display: none;">
 			<div class="panel-body">
-				<div class="col-md-3">
+				<div class="col-md-4">
 						<h2>选择删除文件的路径</h2>
 						<div class="treecss">
 						  <ul class="deletetree"></ul>
 						</div>
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-4">
 					<div class="notebooklist" id="deletetreelist">
 						<!-- 这里加载笔记本列表 -->
 					</div>
+				</div>
+				<div class="col-md-4">
+					<span id="deletebookid" style="display: none;"></span>
+					<span style="font-size: 18px;margin-top: 80px;">当前选择：<span id="deletebookname"></span></span>
 				</div>
 				<form class="form-inline">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<div class="layui-input-inline">
-								<input class="btn btn-default" type="button" value="确认删除">
+								<input class="btn btn-default" id="deletebookbtn" type="button" value="确认删除">
 							</div>
 						</div>
 						<div class="layui-inline">

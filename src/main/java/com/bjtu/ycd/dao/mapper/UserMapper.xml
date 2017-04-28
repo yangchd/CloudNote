@@ -32,6 +32,20 @@
 	 		</if>
 	 	</select>
 	 	
+	 	<select id="getSearchList" parameterType="String"  resultMap="UserResultMap">
+	 		select * from cn_user 
+	 		where 
+	 		username like "%"#{search}"%" or mobile like "%"#{search}"%" or email like "%"#{search}"%"
+	 	</select>
+	 	<select id="getNamesByIds" resultMap="UserResultMap">
+	 		select * from cn_user 
+	 		where id in
+	 				<foreach item="idlist" index="index" collection="list"  open="(" separator="," close=")">
+	 					#{idlist}
+	 				</foreach>
+	 	</select>
+	 	
+	 	
 	 	<insert id="insertByUser" parameterType="com.bjtu.ycd.vo.User" >
 	 		insert into cn_user(id,username,password,mobile,email,spaceid) 
 	 		values(#{id},#{username},#{password},#{mobile},#{email},#{spaceid})
@@ -39,7 +53,7 @@
 	 	
 	 	<update id="updateById" parameterType="com.bjtu.ycd.vo.User">
 	 		update cn_user
-	 		<set>
+	 		<trim prefix="set" suffixOverrides=",">
 	 			<if test="username!=null">
 	 				username=#{username},
 	 			</if>
@@ -47,12 +61,12 @@
 	 				email=#{email},
 	 			</if>
 	 			<if test="mobile!=null">
-	 				mobile=#{mobile}
+	 				mobile=#{mobile},
 	 			</if>
 	 			<if test="password!=null">
-	 				password=#{password}
+	 				password=#{password},
 	 			</if>
-	 		</set>
+	 		</trim>
 	 		where id = #{id}
 	 	</update>
 	 	

@@ -11,3 +11,38 @@
   padding: 15px;
   margin: 0 auto;
 }
+
+.search-member{
+	font-size: 18px;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+.search-input{
+	max-width: 350px;
+}
+
+.search-table{
+	margin-top:20px;
+	margin-bottom:20px;
+	max-width: 500px;
+}
+
+.addtable{
+	max-width: 290px;
+	margin-bottom: 20px;
+}
+
+.deletemembtn{
+	font-size: 18px;
+} 
+.addmembersbtn{
+	font-size: 18px;
+}
+
+.minbtn{
+	min-width: 80px;
+}
+.rightbtn{
+	padding-top: 0px;
+}

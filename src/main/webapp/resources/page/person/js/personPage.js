@@ -23,7 +23,7 @@ function personvalue(){
 			}
 		},
 		error:function(msg){
-			alert(JSON.stringify(msg));
+			alertmsg('error');
 		}
 	});
 			
@@ -62,7 +62,7 @@ window.onload = function(){
 			timeout:2000,
 			success:function(result){
 				if(result.retflag==0){
-					alert("修改成功");
+					alertmsg('修改成功');
 					$('#editbtndiv').css("display","none");
 				}
 				if(result.retflag==1){
@@ -70,7 +70,7 @@ window.onload = function(){
 				}
 			},
 			error:function(msg){
-				alert(JSON.stringify(msg));
+				alertmsg('error');
 			}
 		});
 	});

@@ -90,5 +90,30 @@ public class PersonController {
     	}
     	return rMap;
     }
+    
+    @RequestMapping(value="/search",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> searchByMsg(String search){
+    	
+    	try {
+    		search = new String(search.getBytes("iso-8859-1"),"utf-8");
+		} catch (Exception e) {
+			logger.info(e.getMessage()+"\r\n");
+		}
+    	
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	
+    	List<User> list = userService.getSearchList(search);
+    	
+    	if(list!=null&&list.size()>0){
+    		rMap.put("retflag", "0");
+    		rMap.put("list", list);
+    		rMap.put("msg", "修改成功");
+    	}else{
+    		rMap.put("retflag", "1");
+    		rMap.put("msg", "修改失败");
+    	}
+    	return rMap;
+    }
 
 }  
