@@ -111,6 +111,26 @@ public class LoginController {
     	return rMap;
     }
     
+    @RequestMapping(value="/setSession",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> setSession(String sessionname,String value,HttpSession httpSession){
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	httpSession.setAttribute(sessionname, value);
+    	rMap.put("retflag", "0");
+		rMap.put("msg", "session设置成功");
+    	return rMap;
+    }
+    
+    @RequestMapping(value="/getSessionByName",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getSessionByName(String sessionname,HttpSession httpSession){
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	rMap.put("retflag", "0");
+    	rMap.put("sessionvalue", httpSession.getAttribute(sessionname));
+		rMap.put("msg", "session获取成功");
+    	return rMap;
+    }
+    
     @RequestMapping(value="/logout",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> logOut(User loginuser,HttpSession httpSession){

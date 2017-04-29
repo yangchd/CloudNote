@@ -37,6 +37,11 @@
 	 			and flag = #{flag}
 	 		</if>
 	 	</select>
+	
+	 	<select id="getBookByKey" parameterType="String" resultMap="bookResultMap">
+	 		select * from cn_notebook 
+	 		where notebookname like "%"#{key}"%" or msg like "%"#{key}"%"
+	 	</select>
 	 	
 	 	<insert id="insertByVo" parameterType="com.bjtu.ycd.vo.NoteBook" >
 	 		insert into cn_notebook(notebookid,notebookname,msg,createtime,edittime,spaceid,flag) 

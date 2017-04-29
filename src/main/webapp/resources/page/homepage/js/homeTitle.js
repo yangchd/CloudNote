@@ -56,7 +56,7 @@ function homeTitle(){
 	
 	//下拉按钮
 	$('#logoutbtn').on('click',function(){
-//		logout();
+		logout();
 		window.location.href=getUrl()+"/page/login/login.jsp";
 	})
 	$('#gotopersonpage').on('click',function(){

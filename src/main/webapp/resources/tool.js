@@ -24,6 +24,17 @@ function alertmsg(message){
 }
 
 
+function returnPageType(){
+	var thisURL = document.URL;
+	var getval  = thisURL.split("?")[1];
+	if(getval!=null&&getval!=""){
+		if(getval=="team")return "team";
+		if(getval=="lastread")return "lastread";
+	}else{
+		return "";
+	}
+}
+
 /**
  * 获取当前登录用户id用
  * @returns {String}
@@ -49,6 +60,99 @@ function getUserID(){
 		}
 	});
 	return userid;
+}
+
+/**
+ * 获取当前登录用户spaceid用
+ * @returns {String}
+ */
+function getUserSpaceId(){
+	var spaceid="";
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/person/getPersonValue",
+		async:false,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+				spaceid = result.person.spaceid;
+			}
+			if(result.retflag==1){
+				window.location.href=getUrl()+"/page/login/login.jsp";
+			}
+		},
+		error:function(msg){
+			alertmsg('error');
+		}
+	});
+	return spaceid;
+}
+
+/**
+ * 传入上一次查看的组的spaceid
+ */
+function setteamspaceid(id){
+	var data={
+			value:id,
+			sessionname:"nowteamspaceid"
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/login/setSession",
+		async:false,
+		data:data,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+		},
+		error:function(msg){
+			alertmsg('error');
+		}
+	});
+}
+function getteamspaceid(){
+	var nowteamspaceid="";
+	var name = "nowteamspaceid";
+	var data={
+			sessionname:name
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/login/getSessionByName",
+		async:false,
+		data:data,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			nowteamspaceid = result.sessionvalue;
+		},
+		error:function(msg){
+			alertmsg('error');
+		}
+	});
+	return nowteamspaceid;
+}
+function getSessionByName(name){
+	var lastread="";
+	var data={
+			sessionname:name
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/login/getSessionByName",
+		async:false,
+		data:data,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			lastread = result.sessionvalue;
+		},
+		error:function(msg){
+			alertmsg('error');
+		}
+	});
+	return lastread;
 }
 
 

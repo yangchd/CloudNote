@@ -36,4 +36,18 @@ public class NoteBookServiceImpl implements NoteBookService {
 		return this.notebookdao.deleteById(book);
 	}
 
+	@Override
+	public List<NoteBook> getBookByKey(String key) {
+		return this.notebookdao.getBookByKey(key);
+	}
+
+	@Override
+	public List<NoteBook> getBookQuickList(NoteBook book) {
+		List<NoteBook> spacebook = this.notebookdao.getBookByVo(book);
+		NoteBook bslist = new NoteBook();
+		bslist.setSpaceid(spacebook.get(0).getSpaceid());
+		List<NoteBook> blist = this.notebookdao.getBookByVo(bslist);
+		return blist;
+	}
+
 }

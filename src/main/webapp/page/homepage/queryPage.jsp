@@ -13,13 +13,13 @@
 </head>
 <body>
 	<div class="container">
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default" role="navigation" style="height:50px;">
 		<div id="homeTitle">
 			<!-- 这里加载homeTitle页面 -->
 		</div>
 		</nav>
 	</div>
-	<div class="container">
+	<div class="container" style="display: none">
 		<div class="panel panel-default">
 			<div class="panel-heading">推荐</div>
 			<div class="panel-body">
@@ -32,13 +32,12 @@
 			<div class="panel-body">
 				<div class="col-md-3">
 					<div class="input-group">
-						<input type="text" class="form-control"
-							placeholder="Search for..."> <span
-							class="input-group-btn">
-							<button class="btn btn-default" type="button">搜索</button>
+						<input type="text" id="searchkey" class="form-control" placeholder="Search for...">
+						<span class="input-group-btn">
+							<button class="btn btn-default" id="searchbtn" type="button">搜索</button>
 						</span>
 					</div>
-					<div class="notebooklist" style="margin-top: 30px;">
+					<div class="notebooklist" id="querylist" style="margin-top: 30px;">
 						<!-- 这里加载笔记本列表 -->
 					</div>
 				</div>

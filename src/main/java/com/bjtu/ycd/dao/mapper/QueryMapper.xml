@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.bjtu.ycd.dao.IQueryDao">
+		<resultMap type="com.bjtu.ycd.vo.Query" id="queryResultMap">
+			<id column="id" property="id" />
+			<result column="lastread" property="lastread"/>
+			<result column="keyword" property="keyword"/>
+		</resultMap>
+	
+	
+	 	<select id="getQueryByVo" parameterType="com.bjtu.ycd.vo.Query" resultMap="queryResultMap">
+	 		select * from cn_query 
+	 		where 1=1
+	 		<if test="id!=null">
+	 			and id = #{id}
+	 		</if>
+	 		<if test="lastread!=null">
+	 			and lastread = #{lastread}
+	 		</if>
+	 		<if test="keyword!=null">
+	 			and keyword = #{keyword}
+	 		</if>
+	 	</select>
+	 	
+	 	<insert id="insertByVo" parameterType="com.bjtu.ycd.vo.Query" >
+	 		insert into cn_query(id,lastread,keyword) 
+	 		values(#{id},#{lastread},#{keyword})
+	 	</insert>
+	 	
+	 	<update id="updateById" parameterType="com.bjtu.ycd.vo.Query">
+	 		update cn_query
+	 		<trim prefix="set" suffixOverrides=",">
+	 			<if test="lastread!=null">
+	 				lastread=#{lastread},
+	 			</if>
+	 			<if test="keyword!=null">
+	 				keyword=#{keyword},
+	 			</if>
+	 		</trim>
+	 		where id = #{id}
+	 	</update>
+	 	
+	</mapper>
+	

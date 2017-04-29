@@ -12,4 +12,6 @@ public interface NoteBookService {
 	List<NoteBook> getBookByVo(NoteBook book);
 	int updateById(NoteBook book);
 	int deleteById(NoteBook book);
+	List<NoteBook> getBookByKey(String key);
+	List<NoteBook> getBookQuickList(NoteBook book);
 }

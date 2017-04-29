@@ -14,7 +14,7 @@
 </head>
 <body>
 		<div class="container">
-			<nav class="navbar navbar-default" role="navigation">
+			<nav class="navbar navbar-default" role="navigation" style="height:50px;">
 			  <div id="homeTitle">
 		      		<!-- 这里加载homeTitle页面 -->
 		      </div>

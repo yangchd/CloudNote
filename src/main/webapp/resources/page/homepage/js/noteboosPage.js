@@ -2,12 +2,20 @@
 /**
  * 从后台获取当前用户的目录树
  */
+
+
 function getTreeById(){
-	var thisURL = document.URL;
-	var getval  = thisURL.split("?")[1];
 	var beginspaceid = "";
-	if(getval!=null&&getval!=""){
-		beginspaceid = getval.split("=")[1];
+	if(returnPageType()!=""){
+		//页面类型控制区、根据页面后面的参数控制页面加载
+		if(returnPageType()=="team"){
+			beginspaceid = getteamspaceid();
+		}
+		if(returnPageType()=="lastread"){
+			var lastread = getSessionByName("lastread");
+			beginspaceid = lastread.split(",")[0];
+			quickloadlist(lastread.split(",")[1]);
+		}
 	}else{
 		beginspaceid = "";
 	}
@@ -36,6 +44,29 @@ function getTreeById(){
 	return tree;
 }
 
+/**
+ * 快速打开加载
+ */
+function quickloadlist(bookid){
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/query/getquickload",
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+				loadbooklist(result.booklist,$("#pwdlist"),result.booklist[0].spaceid,loadtextarea);
+				loadtextarea(bookid);
+			}
+			if(result.retflag==1){
+				loadbooklist(result.booklist,$("#pwdlist"),result.booklist[0].spaceid,loadtextarea);
+			}
+		},
+		error:function(msg){
+			alertmsg("error");
+		}
+	});
+}
 
 /**
  * 生成树函数 
@@ -157,6 +188,10 @@ function movefromtree(item,target){
 			}
 			if(result.retflag==1){
 				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
+				$('#movespaceid').empty();
+				$('#movespaceid').append(item.id);
+				$('#movespacename').empty();
+				$('#movespacename').append("目录："+item.name+"下  ");
 			}
 		},
 		error:function(msg){
@@ -170,28 +205,28 @@ function movetotree(item,target){
 	var data={
 			spaceid:spaceid
 	}
-	$.ajax({
-		type:"GET",
-		url:getUrl()+"/notebook/getbooklist",
-		data:data,
-		dataType:"json",
-		timeout:2000,
-		success:function(result){
-			if(result.retflag==0){
-				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
-				$('#movetoid').empty();
-				$('#movetoid').append(item.id);
-				$('#movetoname').empty();
-				$('#movetoname').append("目录："+item.name+"下  ");
-			}
-			if(result.retflag==1){
-				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
-			}
-		},
-		error:function(msg){
-			alertmsg("error");
-		}
-	});
+	$('#movetoid').empty();
+	$('#movetoid').append(item.id);
+	$('#movetoname').empty();
+	$('#movetoname').append("目录："+item.name+"下  ");
+//	$.ajax({
+//		type:"GET",
+//		url:getUrl()+"/notebook/getbooklist",
+//		data:data,
+//		dataType:"json",
+//		timeout:2000,
+//		success:function(result){
+//			if(result.retflag==0){
+//				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
+//			}
+//			if(result.retflag==1){
+//				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
+//			}
+//		},
+//		error:function(msg){
+//			alertmsg("error");
+//		}
+//	});
 }
 
 /**
@@ -376,8 +411,4 @@ window.onload = function(){
 			}
 		});
 	})
-	
-	
-	
-	
 }

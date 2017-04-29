@@ -196,9 +196,8 @@ function gotonotePageById(teamid){
 		timeout:2000,
 		success:function(result){
 			if(result.retflag==0){
-				window.location.href=getUrl()
-										+"/page/homepage/notebookPage.jsp?team="
-										+result.list[0].spaceid;
+				setteamspaceid(result.list[0].spaceid);
+				window.location.href=getUrl()+"/page/homepage/notebookPage.jsp?team";
 			}
 			if(result.retflag==1){
 				alertmsg("error");

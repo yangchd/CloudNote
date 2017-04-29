@@ -12,8 +12,9 @@ function delHtmlTag(str){
  * this为生成位置
  * spaceid为当前所有笔记本所在空间的id
  * func为每个列所添加的动作函数
+ * flag控制编辑器是否编辑，false时不能编辑
  */
-function loadbooklist(list,$this,spaceid,func){
+function loadbooklist(list,$this,spaceid,func,flag){
 	$this.find('#booklist').empty();
 	$this.find('#booklist').append('<div class="treelistid" style="display: none;">'+spaceid+'</div>');
 	if(list==null||list.length<=0){
@@ -45,6 +46,6 @@ function loadbooklist(list,$this,spaceid,func){
 		var booklistid = $(this).find('#booklistid').text();
 		var booklistname = $(this).find('#booklistname').text();
 		//将信息加载到编辑区
-		func(booklistid,booklistname);
+		func(booklistid,booklistname,flag);
 	})
 }

@@ -10,6 +10,5 @@ import com.bjtu.ycd.vo.User;
 @MapperScan
 public interface SpaceService {
 	int createSpace(Space space);
-	
 	Map<String,Object> getTreeById(User user);
 }

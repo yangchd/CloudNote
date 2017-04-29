@@ -3,7 +3,7 @@
  * 讲对应的笔记本信息加载到textarea里面
  * notebookid 为笔记本id
  */
-function loadtextarea(notebookid){
+function loadtextarea(notebookid,booklistname,flag){
 	if(notebookid!=null){
 		var data = {
 				notebookid:notebookid
@@ -21,11 +21,22 @@ function loadtextarea(notebookid){
 					$('#bookname').text(book.notebookname);
 					$('#createtime').text(book.createtime.substring(0,10));
 					$('#bookarea').text(book.msg);
-					$('#textareatopbtn').css("display","block");
+					if(flag=="false"){
+					}else{
+						$('#textareatopbtn').css("display","block");
+						//这里添加一个上次阅读标记
+						var beginspaceid = "";
+						if(returnPageType()=="team"){
+							beginspaceid = getteamspaceid();
+						}else{
+							beginspaceid = getUserSpaceId();
+						}
+						lastreadflag(beginspaceid,notebookid);
+					}
 					createtext();
 				}
 				if(result.retflag==1){
-					alertmsg('这里还没有创建笔记本~');
+					alertmsg('这里什么都没有~');
 				}
 			},
 			error:function(msg){
@@ -39,6 +50,31 @@ function loadtextarea(notebookid){
 		$('#bookarea').empty();
 		createtext();
 	}
+}
+
+//将点击页面的开始空间地址和点击的笔记本id记录
+function lastreadflag(spaceid,bookid){
+	var userid = getUserID();
+	var data = {
+			id:userid,
+			lastread:spaceid+","+bookid
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/query/insertorupdate",
+		dataType:"json",
+		data:data,
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+			}
+			if(result.retflag==1){
+			}
+		},
+		error:function(msg){
+			alertmsg('error');
+		}
+	});
 }
 
 /**

@@ -16,7 +16,7 @@
 
 	<div id="notebookPage_top">
 		<div class="container">
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default" role="navigation" style="height:50px;">
 		  <div id="homeTitle">
 	      		<!-- 这里加载homeTitle页面 -->
 	      </div>
@@ -199,16 +199,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-5">
 					<!-- 左侧下拉菜单 -->
-					<div class="col-md-4">
-						<div class="treecss">
+					<div class="col-md-5">
+						<div class="treecssbody">
 						  <ul class="pwdtree"></ul>
 						</div>
 					</div>
 					
 					<!-- 中部笔记本显示  -->
-					<div class="col-md-8">
+					<div class="col-md-7" style="padding-right: 0px;">
 						<div class="notebooklist" id="pwdlist">
 							<!-- 这里加载笔记本列表 -->
 						</div>
@@ -217,7 +217,7 @@
 			
 			
 				<!-- 右侧文本编辑和功能按钮  -->
-				<div class="col-md-6">
+				<div class="col-md-7">
 					<div class="textareaPage">
 					</div>
 				</div>

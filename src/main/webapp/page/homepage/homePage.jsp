@@ -15,20 +15,34 @@
 <body>
 	<div id="homePage_top">
 		<div class="container">
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default" role="navigation" style="height:50px;">
 	      <div id="homeTitle">
 	      		<!-- 这里加载homeTitle页面 -->
 	      </div>
 		</nav>
 	
 	      <!-- 上部图文区 -->
-	      <div class="jumbotron">
+	      <div class="col-md-12 jumbotron">
 	        <h1 style="padding-bottom: 12px;">欢迎使用云笔记系统</h1>
 	        
-	        <p class="lastnote">
-	        	代办工作：某某某笔记
-	          <a class="btn btn-primary" href="javascript:;" id="lastbtn" role="button">点我查看详情 &raquo;</a>
-	        </p>
+	        <div class="col-md-6 lastnote" id="lastreadbody" style="display: none;">
+	        	<span>上次打开：</span>
+	        	<span>
+	        		<a href="javascript:;" id="lastreadbtn">
+	        			<span id="lastreadid" style="display: none"></span>
+	        			<span id="lastreadname"></span>
+	        			<span style="padding-left: 30px;" class="glyphicon glyphicon-share-alt"></span>
+	        		</a>
+	        	</span>
+	        </div>
+	        <div class="col-md-6" style="display: none">
+		        <div class="input-group" style="max-width: 400px;">
+					<input type="text" id="searchkey" class="form-control" placeholder="Search for...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" id="searchbtn" type="button">搜索</button>
+					</span>
+				</div>
+	        </div>
 	      </div>
 	    </div>
 	</div>
