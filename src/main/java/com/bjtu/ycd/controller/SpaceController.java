@@ -70,10 +70,16 @@ public class SpaceController {
     @ResponseBody
     public Map<String, Object> getTreeById(User user,HttpSession httpSession){
     	Map<String, Object> rMap = new HashMap<String, Object>();
-    	user.setId(httpSession.getAttribute("userid").toString());
-    	List<User> usertree = userService.getUserByName(user);
     	
-    	Map<String,Object> treeMap = spaceService.getTreeById(usertree.get(0));
+    	String spaceid = user.getSpaceid();
+    	if(spaceid==null||"".equals(spaceid)){
+    		user.setId(httpSession.getAttribute("userid").toString());
+    		List<User> usertree = userService.getUserByName(user);
+    		user.setSpaceid(usertree.get(0).getSpaceid());
+    	}else{
+    		user.setSpaceid(spaceid);
+    	}
+    	Map<String,Object> treeMap = spaceService.getTreeById(user);
     	JSONObject obj = new JSONObject(treeMap);
     	String treearr = obj.getJSONArray("tree").toString();
     	if(treeMap!=null){

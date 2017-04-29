@@ -78,8 +78,12 @@ public class TeamServiceImpl implements TeamService {
 				idlist.add(ids[i]);
 			}
 			List<User> ulist = userdao.getNamesByIds(idlist);
-			for(int j=0;j<ulist.size();j++){
-				names.append(ulist.get(j).getUsername()+",");
+			for(int m=0;m<ids.length;m++){
+				for(int j=0;j<ulist.size();j++){
+					if(ids[m].equals(ulist.get(j).getId())){
+						names.append(ulist.get(j).getUsername()+",");
+					}
+				}
 			}
 			names.deleteCharAt(names.length()-1);
 		}else{

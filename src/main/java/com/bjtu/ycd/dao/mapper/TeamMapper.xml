@@ -7,6 +7,7 @@
 			<result column="teamname" property="teamname"/>
 			<result column="leader" property="leader"/>
 			<result column="member" property="member"/>
+			<result column="spaceid" property="spaceid"/>
 			<result column="createtime" property="createtime"/>
 		</resultMap>
 	
@@ -25,6 +26,9 @@
 	 		<if test="member!=null">
 	 			and member = #{member}
 	 		</if>
+	 		<if test="spaceid!=null">
+	 			and spaceid = #{spaceid}
+	 		</if>
 	 		<if test="createtime!=null">
 	 			and createtime = #{createtime}
 	 		</if>
@@ -36,8 +40,8 @@
 	 	</select>
 	 	
 	 	<insert id="insertByVo" parameterType="com.bjtu.ycd.dao.ITeamDao" >
-	 		insert into cn_team(teamid,teamname,leader,member,createtime) 
-	 		values(#{teamid},#{teamname},#{leader},#{member},#{createtime})
+	 		insert into cn_team(teamid,teamname,leader,member,spaceid,createtime) 
+	 		values(#{teamid},#{teamname},#{leader},#{member},#{spaceid},#{createtime})
 	 	</insert>
 	 	
 	 	<delete id="deleteById" parameterType="com.bjtu.ycd.dao.ITeamDao">
@@ -55,6 +59,9 @@
 		 		</if>
 		 		<if test="member!=null">
 		 			member = #{member},
+		 		</if>
+		 		<if test="spaceid!=null">
+		 			spaceid = #{spaceid},
 		 		</if>
 		 		<if test="createtime!=null">
 		 			createtime = #{createtime},

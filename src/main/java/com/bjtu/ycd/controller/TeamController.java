@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjtu.ycd.logger.LoggerUtil;
+import com.bjtu.ycd.service.SpaceService;
 import com.bjtu.ycd.service.TeamService;
+import com.bjtu.ycd.vo.Space;
 import com.bjtu.ycd.vo.Team;
 
 @Controller
@@ -32,34 +34,54 @@ public class TeamController {
 	@Resource
 	private TeamService teamService;
 	
+	@Resource
+	private SpaceService spaceService;
+	
     @RequestMapping(value="/createteam",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> createTeam(Team team,HttpSession httpSession){
     	Map<String, Object> rMap = new HashMap<String, Object>();
-    	
-    	String teamid = UUID.randomUUID().toString();
-    	team.setTeamid(teamid);
-    	String leader = httpSession.getAttribute("userid").toString();
-    	team.setLeader(leader);
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    	team.setCreatetime(sdf.format(new Date()));
-    	try {
+    	//创建小组前先创建一个空间
+    	String spaceid = UUID.randomUUID().toString();
+		Space space = new Space();
+		space.setSpaceid(spaceid);
+		
+		try {
 			String teamname = new String(team.getTeamname().getBytes("iso-8859-1"),"utf-8");
 			team.setTeamname(teamname);
-			String member = new String(team.getMember().getBytes("iso-8859-1"),"utf-8");
-			member = member.substring(0, member.length()-1);
-			if(member.indexOf(leader)<0){
-				member = member+","+leader;
-			}
-			team.setMember(member);
 		} catch (Exception e) {
 			logger.info(e.getMessage()+"\r\n");
 		}
-    	
-    	int result = teamService.createTeam(team);
+		
+		space.setSpacename("小组："+team.getTeamname());
+    	int result = spaceService.createSpace(space);
     	if(result>0){
-    		rMap.put("retflag", "0");
-    		rMap.put("msg", "创建成功");
+    		team.setSpaceid(spaceid);
+	    	String teamid = UUID.randomUUID().toString();
+	    	team.setTeamid(teamid);
+	    	String leader = httpSession.getAttribute("userid").toString();
+	    	team.setLeader(leader);
+	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    	team.setCreatetime(sdf.format(new Date()));
+	    	try {
+				String member = new String(team.getMember().getBytes("iso-8859-1"),"utf-8");
+				member = member.substring(0, member.length()-1);
+				if(member.indexOf(leader)<0){
+					member = member+","+leader;
+				}
+				team.setMember(member);
+			} catch (Exception e) {
+				logger.info(e.getMessage()+"\r\n");
+			}
+    	
+    		result = teamService.createTeam(team);
+	    	if(result>0){
+	    		rMap.put("retflag", "0");
+	    		rMap.put("msg", "创建成功");
+	    	}else{
+	    		rMap.put("retflag", "1");
+	    		rMap.put("msg", "创建失败");
+	    	}
     	}else{
     		rMap.put("retflag", "1");
     		rMap.put("msg", "创建失败");

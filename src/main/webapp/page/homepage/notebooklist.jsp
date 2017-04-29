@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../../resources/page/homepage/js/notebooklist.js"></script>
 
 <body>
+	<div class="treelistid" style="display: none;"></div>
 	<div class="panel panel-default">
 		<div class="list-group" id="booklist">
 			<a href="javascript:;" class="list-group-item">

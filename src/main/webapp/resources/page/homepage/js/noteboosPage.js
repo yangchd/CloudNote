@@ -3,11 +3,23 @@
  * 从后台获取当前用户的目录树
  */
 function getTreeById(){
+	var thisURL = document.URL;
+	var getval  = thisURL.split("?")[1];
+	var beginspaceid = "";
+	if(getval!=null&&getval!=""){
+		beginspaceid = getval.split("=")[1];
+	}else{
+		beginspaceid = "";
+	}
+	var data = {
+			spaceid:beginspaceid
+	}
 	var tree="";
 	$.ajax({
 		type:"GET",
 		url:getUrl()+"/spaceController/gettree",
 		dataType:"json",
+		data:data,
 		async:false,
 		timeout:2000,
 		success:function(result){
@@ -296,6 +308,14 @@ window.onload = function(){
 	$('#movebtn').on('click',function(){
 		var spaceid = $('#movetoid').text();
 		var bookid = $('#movebookid').text();
+		if(bookid==null||bookid==""){
+			alertmsg("您还没有选择要移动的笔记本~");
+			return;
+		}
+		if(spaceid==null||spaceid==""){
+			alertmsg("请先选择移动至哪个目录");
+			return;
+		}
 		var data={
 				notebookid:bookid,
 				spaceid:spaceid
@@ -330,6 +350,10 @@ window.onload = function(){
 	})
 	$('#deletebookbtn').on('click',function(){
 		var bookid = $('#deletebookid').text();
+		if(bookid==null||bookid==""){
+			alertmsg("请选择要删除的笔记本~");
+			return;
+		}
 		var data={
 				notebookid:bookid,
 		}

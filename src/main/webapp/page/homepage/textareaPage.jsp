@@ -7,7 +7,7 @@
 <script type="text/javascript" src="../../resources/page/homepage/js/textareaPage.js"></script>
 
 <body>
-					<div id="topbtn" style="display: block;">
+					<div id="textareatopbtn" style="display: none;">
 						<div class="textword">
 							<span id="bookid" style="display: none;"></span>
 							<span>名称:</span>
@@ -23,7 +23,7 @@
 							<input class="btn btn-default" id="delete" type="button" value="删除">
 						</div>
 					</div>
-					<div id="textareaparent">
+					<div id="textareaparent" style="padding-right: 15px;">
 						<textarea class="layui-textarea" id="bookarea" style="display: none"></textarea>
 					</div>
 </body>

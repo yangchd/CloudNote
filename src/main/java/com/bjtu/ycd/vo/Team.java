@@ -11,6 +11,14 @@ public class Team {
 	private String member;
 	private String membername;
 	private String createtime;
+	private String spaceid;
+	
+	public String getSpaceid() {
+		return spaceid;
+	}
+	public void setSpaceid(String spaceid) {
+		this.spaceid = spaceid;
+	}
 	public String getTeamid() {
 		return teamid;
 	}

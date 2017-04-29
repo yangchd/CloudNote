@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>笔记本</title>
+
 <mx:commonlink/>
 <link href="../../resources/page/homepage/css/notebookPage.css" rel="stylesheet">
 <script type="text/javascript" src="../../resources/page/homepage/js/noteboosPage.js"></script>
@@ -27,13 +28,14 @@
 		<!-- 新增面板，界面待优化 -->
 		<div class="panel panel-default" id="addbtn_panel" style="display: none;">
 			<div class="panel-body">
+			<div class="col-md-2"></div>
 			<div class="col-md-3">
-					<h2>请选择新增文件路径</h2>
+					<h2>新增文件路径</h2>
 					<div class="treecss">
 					  <ul class="addtree"></ul>
 					</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<form class="form-inline">
 						<div class="layui-form-item">
 							<div class="layui-inline">
@@ -63,6 +65,11 @@
 								</div>
 							</div>
 						</div>
+				</form>
+			</div>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-12">
 						<div class="layui-form-item">
 							<div class="layui-inline">
 								<div class="layui-input-inline">
@@ -75,9 +82,6 @@
 								</div>
 							</div>
 						</div>
-				</form>
-			</div>
-			<div class="col-md-3">
 			</div>
 			</div><!-- panel-body -->
 		</div><!-- 新增面板 -->
@@ -85,22 +89,25 @@
 		<!-- 移动面板，界面待优化 -->
 		<div class="panel panel-default" id="editbtn_panel" style="display: none;">
 			<div class="panel-body">
-			<div class="col-md-4">
-					<h2>选择要移动的笔记本</h2>
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-3">
+					<h2>移动前目录</h2>
 					<div class="treecss">
 					  <ul class="movetreeone"></ul>
 					</div>
 			</div>
 			<div class="col-md-4">
 					<div class="notebooklist" id="movetreeonelist">
-						<!-- 这里加载笔记本列表 -->
 					</div>
 			</div>
-			<div class="col-md-4">
-					<h2>选择要移动到的位置</h2>
+			<div class="col-md-3">
+					<h2>移动后目录</h2>
 					<div class="treecss">
 					  <ul class="movetreetwo"></ul>
 					</div>
+			</div>
+			<div class="col-md-1">
 			</div>
 			<!-- 
 				<div class="col-md-3">
@@ -117,7 +124,6 @@
 				<span id="movetoid" style="display: none;"></span>
 				<span id="movetoname"></span>
 			</div>
-			
 			<form class="form-inline">
 					<div class="layui-form-item">
 						<div class="layui-inline">
@@ -138,8 +144,10 @@
 		<!-- 删除面板，暂时未设计好 -->
 		<div class="panel panel-default" id="deletebtn_panel" style="display: none;">
 			<div class="panel-body">
-				<div class="col-md-4">
-						<h2>选择删除文件的路径</h2>
+				<div class="col-md-1">
+				</div>
+				<div class="col-md-3">
+						<h2>删除文件所在路径</h2>
 						<div class="treecss">
 						  <ul class="deletetree"></ul>
 						</div>
@@ -149,9 +157,11 @@
 						<!-- 这里加载笔记本列表 -->
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<span id="deletebookid" style="display: none;"></span>
 					<span style="font-size: 18px;margin-top: 80px;">当前选择：<span id="deletebookname"></span></span>
+				</div>
+				<div class="col-md-1">
 				</div>
 				<form class="form-inline">
 					<div class="layui-form-item">
@@ -177,41 +187,42 @@
 	
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<div class="col-md-6">
-			<div class="col-md-12" style="text-align: center;">
-				<!-- 中部按钮菜单栏 -->
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div class="btn-group" role="group" aria-label="...">
-							<input class="btn btn-default" id="addbtn" type="button" value="新增">
-							<input class="btn btn-default" id="editbtn" type="button" value="移动">
-							<input class="btn btn-default" id="deletebtn" type="button" value="删除">
+				<div class="col-md-12" style="text-align: center;">
+					<!-- 中部按钮菜单栏 -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="btn-group" role="group" aria-label="...">
+								<input class="btn btn-default" id="addbtn" type="button" value="新增">
+								<input class="btn btn-default" id="editbtn" type="button" value="移动">
+								<input class="btn btn-default" id="deletebtn" type="button" value="删除">
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-				<!-- 左侧下拉菜单 -->
-				<div class="col-md-4">
-					<div class="treecss">
-					  <ul class="pwdtree"></ul>
+				<div class="col-md-6">
+					<!-- 左侧下拉菜单 -->
+					<div class="col-md-4">
+						<div class="treecss">
+						  <ul class="pwdtree"></ul>
+						</div>
+					</div>
+					
+					<!-- 中部笔记本显示  -->
+					<div class="col-md-8">
+						<div class="notebooklist" id="pwdlist">
+							<!-- 这里加载笔记本列表 -->
+						</div>
 					</div>
 				</div>
-				
-				<!-- 中部笔记本显示  -->
-				<div class="col-md-8">
-					<div class="notebooklist" id="pwdlist">
-						<!-- 这里加载笔记本列表 -->
-					</div>
-				</div>
-			</div>
+			
+			
 				<!-- 右侧文本编辑和功能按钮  -->
 				<div class="col-md-6">
 					<div class="textareaPage">
 					</div>
 				</div>
 			</div>
-			</div>
-		</div>
-
+		</div><!-- panel panel-default -->
+	</div>
 </body>
 </html>

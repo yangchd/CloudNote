@@ -21,6 +21,7 @@ function loadtextarea(notebookid){
 					$('#bookname').text(book.notebookname);
 					$('#createtime').text(book.createtime.substring(0,10));
 					$('#bookarea').text(book.msg);
+					$('#textareatopbtn').css("display","block");
 					createtext();
 				}
 				if(result.retflag==1){
@@ -124,6 +125,7 @@ function createtext(){
 					  if(result.retflag==0){
 						  reloadlist();
 						  loadtextarea(null);
+						  $('#textareatopbtn').css("display","none");
 						  alertmsg("删除成功！")
 					  }
 					  if(result.retflag==1){

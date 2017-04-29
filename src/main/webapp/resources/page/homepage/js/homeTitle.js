@@ -10,14 +10,14 @@ function getSession(){
 		timeout:2000,
 		success:function(result){
 			if(result.retflag==0){
-				$('#username').text(result.username);
+				$('#titleusername').html(result.username+'<span class="caret"></span>');
 			}
 			if(result.retflag==1){
 				window.location.href=getUrl()+"/page/login/login.jsp";
 			}
 		},
 		error:function(msg){
-			alert(JSON.stringify(msg));
+			alertmsg('error');
 		}
 	});
 }
@@ -34,7 +34,7 @@ function logout(){
 			}
 		},
 		error:function(msg){
-			alert(JSON.stringify(msg));
+			alertmsg('error');
 		}
 	});
 }
@@ -53,6 +53,8 @@ function homeTitle(){
 	$('#gototeampage').on('click',function(){
 		window.location.href=getUrl()+"/page/homepage/teamPage.jsp";
 	})
+	
+	//下拉按钮
 	$('#logoutbtn').on('click',function(){
 //		logout();
 		window.location.href=getUrl()+"/page/login/login.jsp";

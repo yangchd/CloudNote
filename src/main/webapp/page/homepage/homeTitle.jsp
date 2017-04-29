@@ -24,10 +24,12 @@
 	              <li><a href="javascript:;" id="gototeampage">我的小组</a></li>
 	            </ul>
 			<ul class="nav navbar-nav navbar-right">
+			<!-- 
 				<li><a href="javascript:;" id="username"></a></li>
+			 -->
 				<li class="dropdown">
 					<a href="javascript:;"
-						class="dropdown-toggle" data-toggle="dropdown">选项 
+						class="dropdown-toggle" data-toggle="dropdown" id="titleusername">选项 
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" role="menu">

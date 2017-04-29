@@ -52,11 +52,11 @@
 						<div class="tablehead search-member">小组成员</div>
 						<table class="table table-hover addtable" id="addtableid">
 							<tbody id="addmemlist">
+								<!-- 
 								<tr>
 									<th>已选择组员</th>
 									<th>选项</th>
 								</tr>
-								<!-- 
 								<tr>
 									<td>
 										<p style="display: none;" id='adduserid'>111</p> 名字
@@ -101,7 +101,7 @@
 						</table>
 					</div>
 					</div>
-					<div class="col-md-12" style="text-align: center;">
+					<div class="col-md-12" style="text-align: center;margin-top: 20px;">
 		        		<div class="layui-form-item">
 								<div class="layui-inline">
 									<div class="layui-input-inline">
@@ -190,10 +190,6 @@
 							</div>
 							<table class="table table-hover addtable" id="edittableid">
 								<tbody id="editmemlist">
-									<tr>
-										<th>已有组员</th>
-										<th>选项</th>
-									</tr>
 								</tbody>
 							</table>
 						</div>

@@ -9,7 +9,7 @@ var getUrl = function(){
 }
 
 /**
- * 提示函数
+ * 提示函数,所有页面中的弹出提示
  * @param message
  */
 function alertmsg(message){
@@ -21,6 +21,34 @@ function alertmsg(message){
 			layer.msg(message);
 		}
 	}); 
+}
+
+
+/**
+ * 获取当前登录用户id用
+ * @returns {String}
+ */
+function getUserID(){
+	var userid="";
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/login/getSession",
+		async:false,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+				userid = result.userid;
+			}
+			if(result.retflag==1){
+				window.location.href=getUrl()+"/page/login/login.jsp";
+			}
+		},
+		error:function(msg){
+			alertmsg('error');
+		}
+	});
+	return userid;
 }
 
 
@@ -61,34 +89,4 @@ function addRepeat($this,flag){
 		node.css("color","red");
 	}
 }
-
-/**
- * 获取当前登录用户id用
- * @returns {String}
- */
-function getUserID(){
-	var userid="";
-	$.ajax({
-		type:"GET",
-		url:getUrl()+"/login/getSession",
-		async:false,
-		dataType:"json",
-		timeout:2000,
-		success:function(result){
-			if(result.retflag==0){
-				userid = result.userid;
-			}
-			if(result.retflag==1){
-				window.location.href=getUrl()+"/page/login/login.jsp";
-			}
-		},
-		error:function(msg){
-			alert(JSON.stringify(msg));
-		}
-	});
-	return userid;
-}
-
-
-
 

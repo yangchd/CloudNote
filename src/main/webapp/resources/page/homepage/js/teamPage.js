@@ -20,7 +20,7 @@ function searchmem($this,members,tableid){
 		var table =document.getElementById(tableid);
 		var rows = table.rows.length;
 		var flag = 0;
-		for(var i=1;i<rows;i++){
+		for(var i=0;i<rows;i++){
 			var trid = $(table.rows[i].cells[0].innerHTML).html();
 			if(trid==userid){
 				flag = 1;
@@ -75,6 +75,9 @@ function loadmyteamtable(){
 				}
 			}
 			if(result.retflag==1){
+				$('#myteamtable').empty();
+				alertmsg("你没有创建或加入小组~");
+				$('#addteam_panel').css("display","block");
 			}
 		},
 		error:function(msg){
@@ -91,7 +94,8 @@ function loadmyteamtable(){
 		deleteteamById(teamid);
 	})
 	$('.gotonotePage').on('click',function(){
-		window.location.href=getUrl()+"/page/homepage/notebookPage.jsp";
+		var teamid = $(this).parent().parent().find('#teamid').text();
+		gotonotePageById(teamid);
 	})
 }
 
@@ -176,6 +180,38 @@ function editteamById(teamid){
 	});
 }
 
+
+/**
+ * 查看小组空间
+ */
+function gotonotePageById(teamid){
+	var data={
+			teamid:teamid
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/team/getteamvo",
+		data:data,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+				window.location.href=getUrl()
+										+"/page/homepage/notebookPage.jsp?team="
+										+result.list[0].spaceid;
+			}
+			if(result.retflag==1){
+				alertmsg("error");
+			}
+		},
+		error:function(msg){
+			alertmsg("error");
+		}
+	});
+}
+
+
+
 /**
  * 小组成员增删改函数
  * searchmsg 查询的信息
@@ -232,7 +268,7 @@ window.onload = function(){
 		var member = "";
 		var table =document.getElementById("addtableid");
 		var rows = table.rows.length;
-		for(var i=1;i<rows;i++){
+		for(var i=0;i<rows;i++){
 			var trid = $(table.rows[i].cells[0].innerHTML).html();
 			member = member+trid+",";
 		}
@@ -347,7 +383,7 @@ window.onload = function(){
 		var member = "";
 		var table =document.getElementById("edittableid");
 		var rows = table.rows.length;
-		for(var i=1;i<rows;i++){
+		for(var i=0;i<rows;i++){
 			var trid = $(table.rows[i].cells[0].innerHTML).html();
 			member = member+trid+",";
 		}
