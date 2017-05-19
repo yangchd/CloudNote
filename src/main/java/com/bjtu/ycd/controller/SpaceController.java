@@ -66,6 +66,43 @@ public class SpaceController {
     	return rMap;
     }
     
+    @RequestMapping(value="/update",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> updateSpace(Space space){
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	try {
+			String spacename = new String(space.getSpacename().getBytes("iso-8859-1"),"utf-8");
+			space.setSpacename(spacename);
+		} catch (Exception e) {
+			logger.info(e.getMessage()+"\r\n");
+		}
+    	int result = spaceService.updateById(space);
+    	if(result>0){
+    		rMap.put("retflag", "0");
+    		rMap.put("msg", "修改成功");
+    	}else{
+    		rMap.put("retflag", "1");
+    		rMap.put("msg", "修改失败");
+    	}
+    	return rMap;
+    }
+    
+    @RequestMapping(value="/delete",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> deleteSpace(Space space){
+    	Map<String, Object> rMap = new HashMap<String, Object>();
+    	
+    	int result = spaceService.deleteById(space);
+    	if(result>0){
+    		rMap.put("retflag", "0");
+    		rMap.put("msg", "删除成功");
+    	}else{
+    		rMap.put("retflag", "1");
+    		rMap.put("msg", "删除失败");
+    	}
+    	return rMap;
+    }
+    
     @RequestMapping(value="/gettree",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getTreeById(User user,HttpSession httpSession){

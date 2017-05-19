@@ -20,7 +20,7 @@ function loadbooklist(list,$this,spaceid,func,flag){
 	if(list==null||list.length<=0){
 		$this.find('#booklist')
 		.append("<a href='javascript:;' class='list-group-item'>"
-				+"<h1 class='list-group-item-heading'style='height: 200px;text-align: center;padding-top: 90px;'>这个目录没有内容</h1>"
+				+"<h1 class='list-group-item-heading'style='height: 180px;text-align: center;padding-top: 80px;'>这个目录没有内容</h1>"
 				+"</a>");
 	}else{
 		for(var i=0;i<list.length;i++){

@@ -11,7 +11,7 @@
 	<div class="panel panel-default">
 		<div class="list-group" id="booklist">
 			<a href="javascript:;" class="list-group-item">
-				<h1 class="list-group-item-heading" style="height: 200px;text-align: center;padding-top: 90px;">
+				<h1 class="list-group-item-heading" style="min-height: 180px;text-align: center;padding-top: 80px;">
 				这个目录没有内容
 				</h1>
 			</a>

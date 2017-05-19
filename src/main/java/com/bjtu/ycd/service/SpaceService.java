@@ -11,4 +11,6 @@ import com.bjtu.ycd.vo.User;
 public interface SpaceService {
 	int createSpace(Space space);
 	Map<String,Object> getTreeById(User user);
+	int updateById(Space space);
+	int deleteById(Space space);
 }

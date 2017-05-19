@@ -6,7 +6,6 @@
 			<id column="spaceid" property="spaceid" />
 			<result column="spacename" property="spacename"/>
 			<result column="createtime" property="createtime"/>
-			<result column="edittime" property="edittime"/>
 			<result column="parentid" property="parentid"/>
 		</resultMap>
 	
@@ -23,18 +22,19 @@
 	 		<if test="createtime!=null">
 	 			and createtime = #{createtime}
 	 		</if>
-	 		<if test="edittime!=null">
-	 			and edittime = #{edittime}
-	 		</if>
 	 		<if test="parentid!=null">
 	 			and parentid = #{parentid}
 	 		</if>
 	 	</select>
 	 	
 	 	<insert id="insertBuVo" parameterType="com.bjtu.ycd.vo.Space" >
-	 		insert into cn_space(spaceid,spacename,createtime,edittime,parentid) 
-	 		values(#{spaceid},#{spacename},#{createtime},#{edittime},#{parentid})
+	 		insert into cn_space(spaceid,spacename,createtime,parentid) 
+	 		values(#{spaceid},#{spacename},#{createtime},#{parentid})
 	 	</insert>
+	 	
+	 	<delete id="deleteById" parameterType="com.bjtu.ycd.vo.Space">
+	 		delete from cn_space where spaceid = #{spaceid}
+	 	</delete>
 	 	
 	 	<update id="updateById" parameterType="com.bjtu.ycd.vo.Space">
 	 		update cn_space
@@ -44,9 +44,6 @@
 	 			</if>
 	 			<if test="createtime!=null">
 	 				createtime=#{createtime},
-	 			</if>
-	 			<if test="edittime!=null">
-	 				edittime=#{edittime},
 	 			</if>
 	 			<if test="parentid!=null">
 	 				parentid=#{parentid},

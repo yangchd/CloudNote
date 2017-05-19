@@ -23,7 +23,7 @@
 							<input class="btn btn-default" id="delete" type="button" value="删除">
 						</div>
 					</div>
-					<div id="textareaparent" style="padding-right: 15px;">
+					<div id="textareaparent">
 						<textarea class="layui-textarea" id="bookarea" style="display: none"></textarea>
 					</div>
 </body>

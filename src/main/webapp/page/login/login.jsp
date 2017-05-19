@@ -52,8 +52,10 @@
 	        		<input type="button" class="btn btn-lg btn-primary btn-block" id="loginbtn" value="登陆"/>
 	        		
 	        		<div class="row">
-					  <div class="col-xs-4"></div>
+					  <div class="col-xs-8"></div>
+					  <!-- 
 					  <div class="col-xs-4">忘记密码</div>
+					   -->
 					  <div class="col-xs-4" id='register'>
 						<a href="javascript:;" id="register" >免费注册</a>
 					  </div>

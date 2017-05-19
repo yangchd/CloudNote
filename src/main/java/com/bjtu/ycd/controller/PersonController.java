@@ -36,7 +36,7 @@ public class PersonController {
     
     @RequestMapping(value="/getPersonValue",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> getSession(User person){
+    public Map<String, Object> getPerson(User person){
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	List<User> reuser = userService.getUserByName(person);
     	if(reuser!=null&&reuser.size()>0){

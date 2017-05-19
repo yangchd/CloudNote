@@ -74,4 +74,14 @@ public class SpaceServiceImpl implements SpaceService {
 		return tree;
 	}
 
+	@Override
+	public int updateById(Space space) {
+		return this.spacedao.updateById(space);
+	}
+
+	@Override
+	public int deleteById(Space space) {
+		return this.spacedao.deleteById(space);
+	}
+
 }

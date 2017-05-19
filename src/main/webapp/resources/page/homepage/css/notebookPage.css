@@ -1,11 +1,5 @@
 @CHARSET "UTF-8";
 
-#xiala{
-	padding:0px;
-	width: initial;
-}
-
-
 #navigation{
 	margin-bottom: 20px;
 }
@@ -53,9 +47,24 @@
 #jiantou{
 	padding-left: 40px;
 	 padding-right: 40px;
-	 font-size: 18px;
 }
 
+.maxwithbtn{
+	max-width: 190px;
+}
 
+#addtreename{
+	background-color: white;
+}
+
+.editbtncss{
+	min-width: 80px;
+	margin-left: 20px;
+}
+
+.nopadding{
+	padding-left: 0px;
+	padding-right: 0px;
+}
 
 

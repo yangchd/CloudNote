@@ -158,7 +158,7 @@ public class TeamController {
     
     @RequestMapping(value="/delete",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> deleteBook(Team team){
+    public Map<String, Object> deleteTeam(Team team){
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	
     	int result = teamService.deleteById(team);

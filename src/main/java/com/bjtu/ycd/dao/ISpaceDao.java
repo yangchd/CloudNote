@@ -10,4 +10,6 @@ import com.bjtu.ycd.vo.Space;
 public interface ISpaceDao {
 	public int insertBuVo(Space space);
 	public List<Space> getSpaceByVo(Space space);
+	public int updateById(Space space);
+	public int deleteById(Space space);
 }

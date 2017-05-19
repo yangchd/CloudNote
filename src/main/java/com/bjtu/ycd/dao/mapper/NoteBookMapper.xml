@@ -7,7 +7,6 @@
 			<result column="notebookname" property="notebookname"/>
 			<result column="msg" property="msg"/>
 			<result column="createtime" property="createtime"/>
-			<result column="edittime" property="edittime"/>
 			<result column="spaceid" property="spaceid"/>
 			<result column="flag" property="flag"/>
 		</resultMap>
@@ -27,9 +26,6 @@
 	 		<if test="createtime!=null">
 	 			and createtime = #{createtime}
 	 		</if>
-	 		<if test="edittime!=null">
-	 			and edittime = #{edittime}
-	 		</if>
 	 		<if test="spaceid!=null">
 	 			and spaceid = #{spaceid}
 	 		</if>
@@ -44,8 +40,8 @@
 	 	</select>
 	 	
 	 	<insert id="insertByVo" parameterType="com.bjtu.ycd.vo.NoteBook" >
-	 		insert into cn_notebook(notebookid,notebookname,msg,createtime,edittime,spaceid,flag) 
-	 		values(#{notebookid},#{notebookname},#{msg},#{createtime},#{edittime},#{spaceid},#{flag})
+	 		insert into cn_notebook(notebookid,notebookname,msg,createtime,spaceid,flag) 
+	 		values(#{notebookid},#{notebookname},#{msg},#{createtime},#{spaceid},#{flag})
 	 	</insert>
 	 	
 	 	<delete id="deleteById" parameterType="com.bjtu.ycd.vo.NoteBook">
@@ -60,9 +56,6 @@
 	 			<if test="msg!=null">
 	 				msg=#{msg},
 	 			</if>
-	 			<if test="edittime!=null">
-	 				edittime=#{edittime},
-	 			</if>
 	 			<if test="spaceid!=null">
 	 				spaceid=#{spaceid},
 	 			</if>
@@ -72,7 +65,5 @@
 	 		</trim>
 	 		where notebookid = #{notebookid}
 	 	</update>
-	 	
-	 	
 	</mapper>
 	

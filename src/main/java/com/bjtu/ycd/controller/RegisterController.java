@@ -45,7 +45,7 @@ public class RegisterController {
 	 */
     @RequestMapping(value="/repeat",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> getLogin(User loginuser){
+    public Map<String, Object> getRepeat(User loginuser){
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	List<User>  reuser = new ArrayList<User>();
     	user = loginuser;

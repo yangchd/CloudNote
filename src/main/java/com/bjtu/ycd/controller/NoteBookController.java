@@ -89,8 +89,14 @@ public class NoteBookController {
     	Map<String, Object> rMap = new HashMap<String, Object>();
     	
     	try {
-			String msg = new String(book.getMsg().getBytes("iso-8859-1"),"utf-8");
-			book.setMsg(msg);
+    		if(book.getMsg()!=null){
+    			String msg = new String(book.getMsg().getBytes("iso-8859-1"),"utf-8");
+    			book.setMsg(msg);
+    		}
+    		if(book.getNotebookname()!=null){
+    			String notebookname = new String(book.getNotebookname().getBytes("iso-8859-1"),"utf-8");
+    			book.setNotebookname(notebookname);
+    		}
 		} catch (Exception e) {
 			logger.info(e.getMessage()+"\r\n");
 		}

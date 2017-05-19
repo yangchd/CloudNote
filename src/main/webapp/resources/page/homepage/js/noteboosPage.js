@@ -105,6 +105,8 @@ function loadtree(){
 	  createtree(".movetreetwo",movetotree,str,"#movetreetwolist");
 	  createtree(".deletetree",deletetree,str,"#deletetreelist");
 	  
+	  createtree(".edittree",edittreefunc,str,"#edittreelist");
+	  
 	});
 }
 
@@ -142,6 +144,42 @@ function pwdtree(item,target){
 }
 
 /**
+ * 编辑树回调函数
+ * @param item
+ * @param target
+ */
+function edittreefunc(item,target){
+	var tar = target;
+	var spaceid = item.id;
+	var data={
+			spaceid:spaceid
+	}
+	$.ajax({
+		type:"GET",
+		url:getUrl()+"/notebook/getbooklist",
+		data:data,
+		dataType:"json",
+		timeout:2000,
+		success:function(result){
+			if(result.retflag==0){
+				//根据查询到的结果生成显示列表
+				loadbooklist(result.booklist,$(tar),spaceid,editinputfunc);
+				$('#editpwdid').val(item.id);
+				$('#editpwdname').val(item.name);
+			}
+			if(result.retflag==1){
+				loadbooklist(result.booklist,$(tar),spaceid,editinputfunc);
+				$('#editpwdid').val(item.id);
+				$('#editpwdname').val(item.name);
+			}
+		},
+		error:function(msg){
+			alertmsg("error");
+		}
+	});
+}
+
+/**
  * 新增面板树函数
  * @param item
  */
@@ -157,10 +195,13 @@ function addmovename(bookid,bookname){
 	$('#movebookname').append(bookname);
 }
 function deletename(bookid,bookname){
-	$('#deletebookid').empty();
-	$('#deletebookid').append(bookid);
-	$('#deletebookname').empty();
-	$('#deletebookname').append(bookname);
+	$('#deletebookid').text(bookid);
+	$('#deletebookname').text("笔记本："+bookname);
+}
+
+function editinputfunc(bookid,bookname){
+	$('#editbookid').val(bookid);
+	$('#editbookname').val(bookname);
 }
 
 /**
@@ -184,14 +225,19 @@ function movefromtree(item,target){
 				$('#movespaceid').empty();
 				$('#movespaceid').append(item.id);
 				$('#movespacename').empty();
-				$('#movespacename').append("目录："+item.name+"下  ");
+				$('#movespacename').append("目录："+item.name);
+				$('#movebookid').empty();
+				$('#movebookname').empty();
+				
 			}
 			if(result.retflag==1){
 				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
 				$('#movespaceid').empty();
 				$('#movespaceid').append(item.id);
 				$('#movespacename').empty();
-				$('#movespacename').append("目录："+item.name+"下  ");
+				$('#movespacename').append("目录："+item.name);
+				$('#movebookid').empty();
+				$('#movebookname').empty();
 			}
 		},
 		error:function(msg){
@@ -208,25 +254,7 @@ function movetotree(item,target){
 	$('#movetoid').empty();
 	$('#movetoid').append(item.id);
 	$('#movetoname').empty();
-	$('#movetoname').append("目录："+item.name+"下  ");
-//	$.ajax({
-//		type:"GET",
-//		url:getUrl()+"/notebook/getbooklist",
-//		data:data,
-//		dataType:"json",
-//		timeout:2000,
-//		success:function(result){
-//			if(result.retflag==0){
-//				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
-//			}
-//			if(result.retflag==1){
-//				loadbooklist(result.booklist,$(tar),spaceid,addmovename);
-//			}
-//		},
-//		error:function(msg){
-//			alertmsg("error");
-//		}
-//	});
+	$('#movetoname').append("目录："+item.name);
 }
 
 /**
@@ -249,9 +277,13 @@ function deletetree(item,target){
 		success:function(result){
 			if(result.retflag==0){
 				loadbooklist(result.booklist,$(tar),spaceid,deletename);
+				$('#deletebookid').text(item.id);
+				$('#deletebookname').text("目录："+item.name);
 			}
 			if(result.retflag==1){
 				loadbooklist(result.booklist,$(tar),spaceid,deletename);
+				$('#deletebookid').text(item.id);
+				$('#deletebookname').text("目录："+item.name);
 			}
 		},
 		error:function(msg){
@@ -332,28 +364,51 @@ window.onload = function(){
 		});
 	})
 	
-	
-	
 	$('#editbtn').on('click',function(){
 		$('#editbtn_panel').css("display","block");
 	})
 	$('#canceleditbtn').on('click',function(){
 		$('#editbtn_panel').css("display","none");
 	})
-	$('#movebtn').on('click',function(){
-		var spaceid = $('#movetoid').text();
-		var bookid = $('#movebookid').text();
-		if(bookid==null||bookid==""){
-			alertmsg("您还没有选择要移动的笔记本~");
-			return;
+	$('#editpwdnamebtn').on('click',function(){
+		var spaceid = $('#editpwdid').val();
+		var spacename = $('#editpwdname').val();
+		if(spaceid==""||spacename==""){
+			alertmsg("你还没有选择要修改的节点");
 		}
-		if(spaceid==null||spaceid==""){
-			alertmsg("请先选择移动至哪个目录");
-			return;
+		var data = {
+				spaceid:spaceid,
+				spacename:spacename
 		}
-		var data={
+		$.ajax({
+			type:"GET",
+			url:getUrl()+"/spaceController/update",
+			data:data,
+			dataType:"json",
+			timeout:2000,
+			success:function(result){
+				if(result.retflag==0){
+					alertmsg(result.msg);
+					loadtree();
+				}
+				if(result.retflag==1){
+					alertmsg(result.msg);
+				}
+			},
+			error:function(msg){
+				alertmsg("error");
+			}
+		});
+	})
+	$('#editbooknamebtn').on('click',function(){
+		var bookid = $('#editbookid').val();
+		var bookname = $('#editbookname').val();
+		if(bookid==""||bookname==""){
+			alertmsg("你还没有选择要修改的内容");
+		}
+		var data = {
 				notebookid:bookid,
-				spaceid:spaceid
+				notebookname:bookname
 		}
 		$.ajax({
 			type:"GET",
@@ -363,8 +418,100 @@ window.onload = function(){
 			timeout:2000,
 			success:function(result){
 				if(result.retflag==0){
+					alertmsg(result.msg);
+						var tar = "#edittreelist";
+						var spaceid = $('.treelistid').text();
+						var data1={
+								spaceid:spaceid
+						}
+						$.ajax({
+							type:"GET",
+							url:getUrl()+"/notebook/getbooklist",
+							data:data1,
+							dataType:"json",
+							timeout:2000,
+							success:function(result){
+								if(result.retflag==0){
+									loadbooklist(result.booklist,$(tar),spaceid,editinputfunc);
+								}
+								if(result.retflag==1){
+									loadbooklist(result.booklist,$(tar),spaceid,editinputfunc);
+								}
+							},
+							error:function(msg){
+								alertmsg('error');
+							}
+						});
+				}
+				if(result.retflag==1){
+					alertmsg(result.msg);
+				}
+			},
+			error:function(msg){
+				alertmsg("error");
+			}
+		});
+	})
+	
+	
+	$('#movebtn').on('click',function(){
+		$('#movebtn_panel').css("display","block");
+	})
+	$('#cancelmovebtn').on('click',function(){
+		$('#movebtn_panel').css("display","none");
+	})
+	$('#makemovebtn').on('click',function(){
+		var spacefromid = $('#movespaceid').text();
+		var spacetoid = $('#movetoid').text();
+		var bookid = $('#movebookid').text();
+		//下面进行逻辑判断	1移动目录  2移动笔记本
+		var moveid = "";
+		var data = {};
+		var url = "";
+		if(bookid==null||bookid==""){
+			if(spacefromid==null||spacefromid==""){
+				alertmsg("笔记本或者目录至少选择一样~");
+				return;
+			}else{
+				moveid = spacefromid;
+				if(spacetoid==null||spacetoid==""){
+					alertmsg("请先选择移动至哪个目录~");
+					return;
+				}
+				if(moveid==spacetoid){
+					alertmsg("不能将目录移动到他自己下面= =");
+					return;
+				}
+				url = getUrl()+"/spaceController/update";
+
+				data={
+						spaceid:moveid,
+						parentid:spacetoid
+				}
+			}
+		}else{
+			moveid = bookid;
+			url = getUrl()+"/notebook/update";
+			if(spacetoid==null||spacetoid==""){
+				alertmsg("请先选择移动至哪个目录~");
+				return;
+			}
+			data={
+					notebookid:moveid,
+					spaceid:spacetoid
+			}
+		}
+		$.ajax({
+			type:"GET",
+			url:url,
+			data:data,
+			dataType:"json",
+			timeout:2000,
+			success:function(result){
+				if(result.retflag==0){
 					alertmsg("移动成功");
-					$('#editbtn_panel').css("display","none");
+					$('#movebtn_panel').css("display","none");
+					loadtree();
 				}
 				if(result.retflag==1){
 				}
@@ -384,26 +531,44 @@ window.onload = function(){
 		$('#deletebtn_panel').css("display","none");
 	})
 	$('#deletebookbtn').on('click',function(){
-		var bookid = $('#deletebookid').text();
-		if(bookid==null||bookid==""){
-			alertmsg("请选择要删除的笔记本~");
+		var deleteid = $('#deletebookid').text();
+		var deletename = $('#deletebookname').text();
+		if(deleteid==null||deleteid==""){
+			alertmsg("请选择要删除的内容");
 			return;
 		}
-		var data={
-				notebookid:bookid,
+		var data={};
+		var url="";
+		if(deletename.indexOf("目录")>=0){
+			data={
+					spaceid:deleteid,
+			}
+			url = getUrl()+"/spaceController/delete";
+		}else if(deletename.indexOf("笔记本")>=0){
+			data={
+					notebookid:deleteid,
+			}
+			url = getUrl()+"/notebook/delete";
+		}else{
+			alert(deletename);
+			return;
 		}
 		$.ajax({
 			type:"GET",
-			url:getUrl()+"/notebook/delete",
+			url:url,
 			data:data,
 			dataType:"json",
 			timeout:2000,
 			success:function(result){
 				if(result.retflag==0){
-					alertmsg("删除成功");
+					alertmsg(result.msg);
 					$('#deletebtn_panel').css("display","none");
+					if(deletename.indexOf("目录")>=0){
+						loadtree();
+					}
 				}
 				if(result.retflag==1){
+					alertmsg(result.msg);
 				}
 			},
 			error:function(msg){

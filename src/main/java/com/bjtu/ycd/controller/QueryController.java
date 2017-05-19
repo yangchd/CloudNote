@@ -39,7 +39,11 @@ public class QueryController {
     @ResponseBody
     public Map<String, Object> searchByKey(String key){
     	Map<String, Object> rMap = new HashMap<String, Object>();
-    	
+    	try {
+    		key = new String(key.getBytes("iso-8859-1"),"utf-8");
+		} catch (Exception e) {
+			logger.info(e.getMessage()+"\r\n");
+		}
     	List<NoteBook> blist = bookService.getBookByKey(key);
     	
     	if(blist!=null&&blist.size()>0){
